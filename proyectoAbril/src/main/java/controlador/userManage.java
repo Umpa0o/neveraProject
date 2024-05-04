@@ -24,7 +24,7 @@ import dao.conectaDB;
 public class userManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public static Connection con = null;
+	public static Connection con = null;///borrrar con la continuacion
 
     public userManage() {
         super();
@@ -63,6 +63,7 @@ public class userManage extends HttpServlet {
 			e.getMessage();
 		}
 		///////////////////////////////////////////////////////////////////////////////////////
+		/*****************BORRAR A CONTINUACION con la variable global Connection con****************/
 		con = conectaDB.getConexion();
 		ResultSet rsLis=null;
 		try {

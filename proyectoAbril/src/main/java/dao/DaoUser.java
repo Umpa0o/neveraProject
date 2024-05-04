@@ -31,6 +31,7 @@ public class DaoUser {
 		 * @throws SQLException
 		 * */
 		public void insertarUser(User ue) {
+			String userDefault = "1";
 
 			try {
 				/*String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario, permiso) "
@@ -46,13 +47,16 @@ public class DaoUser {
 				//Precompilada sin id para insertar
 				/*String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario, permiso) "
 							+ "VALUES (?,?,?,?) ";*/
-				String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario) "
-						+ "VALUES (?,?,?) ";
+				String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario, permiso) "
+						+ "VALUES (?,?,?, ?) ";
 				
 				pst= con.prepareStatement(sql);
 				pst.setString(1, ue.getNombreUser());
 				pst.setString(2, ue.getEmail());
 				pst.setString(3, ue.getPasswordUser());
+				
+				
+				pst.setInt(4, ue.getEsAdmin());
 
 
 				System.out.println("Usuario insertado correctamente");

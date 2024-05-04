@@ -178,9 +178,14 @@ public class User {
 	 Crea una nueva instancia de la clase DAOUsuario 
 	 * */
 	public void insertar() throws SQLException {
-			
+			//Esta sección va por patrón !*
+			/**Redundancia: como norma en POO cada objeto debe ser dueño de sus acciones, aunque sea redundante
+			 * 	Si el usuario/User(dueño) es el que se inserta, es él mismo quien debe ejecutar esa acción
+			 * */
 			DaoUser dao = new DaoUser();
 			dao.insertarUser(this);
+			
+			// !* 
 			
 		}//fin insertar
 	
