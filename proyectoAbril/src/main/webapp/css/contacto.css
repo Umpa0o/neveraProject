@@ -1,0 +1,112 @@
+*{
+    margin:0% auto;
+    padding: 0%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container{
+    background-color: aquamarine;
+    width: 50%;
+    min-width: 450px;
+    max-width: 550px;
+    height: 800px;
+}
+
+header{
+    height: 60px;
+    min-height: 70px;
+    background-color: beige;
+}
+
+a{
+    text-decoration: none;
+    padding: 0 10px;
+    color: #fff;
+}
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+    background-color: rgb(176, 14, 176);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.menuContacto ul{
+    display: flex;
+    list-style-type: none;
+    
+}
+.menuContacto a:hover{
+    background-color: blueviolet;
+    padding: 6px 10px;
+    border-radius: 15px;
+    line-height: 2;
+    text-decoration: underline;
+    cursor: grabbing;
+}
+
+
+
+.formularioContacto , label{
+    display: block;
+}
+
+
+.textoUser{
+    resize: none;
+}
+
+.btnFormulario{
+    background-color: bisque;
+    height: 50px;
+    width: 100%;
+
+}
+
+.btnFormulario button{
+    width: 140px;
+    height: 50px;
+    font-size: 20px;
+    padding: 5px 12px ;
+    margin: 5px 5px;
+    text-align: center;
+
+    
+}
+
+
+.btnImg{
+    width: 20%;
+    color: #fff;
+}
+
+.btnReset{
+    background-color: rgb(251, 245, 71);
+    cursor: progress;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.btnReset:hover{
+    background-color: gold;
+    color: red;
+}
+
+.btnEnviar{
+    background-color: rgb(202, 242, 142);
+    cursor: pointer;
+    float: right;
+    
+}
+
+.btnEnviar:hover{
+    background-color: greenyellow;
+    color:  green;
+}
+
+
+
+/**/
