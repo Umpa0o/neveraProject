@@ -41,20 +41,18 @@ public class userManage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// doGet(request, response);
 	//	int id = Integer.parseInt(request.getParameter("id"));
-		
+		try {
 		String nombreUser = request.getParameter("nameUser");
 		String emailUser =request.getParameter("mailUser");
-		String pswUser = request.getParameter("password");
-		//int permUser = Integer.parseInt(request.getParameter("permiso"));
-		
-	//	int isAdmin = Integer.parseInt(request.getParameter("permiso"));
+		String pswUser = request.getParameter("passUser");
+
 		
 		//User(String nombreUser, String email, String passwordUser) 
 		User ue = new User(nombreUser, emailUser, pswUser);
 		System.out.println(ue.toString());
 		
 		DaoUser dao;
-		try {
+		
 			//ue.insertar();
 			dao = new DaoUser();
 			dao.insertarUser(ue);

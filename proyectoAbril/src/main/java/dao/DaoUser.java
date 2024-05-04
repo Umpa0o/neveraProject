@@ -54,11 +54,11 @@ public class DaoUser {
 				pst.setString(2, ue.getEmail());
 				pst.setString(3, ue.getPasswordUser());
 
-				
-				
+
 				System.out.println("Usuario insertado correctamente");
 				
 				int filas = pst.executeUpdate();
+				
 				//Cerramos el PreparedStatement
 				pst.close();
 				
@@ -81,9 +81,7 @@ public class DaoUser {
 				+rsLis.getString(8)+"\t" +rsLis.getString(9));
 				}
 				
-				
-				
-				
+	
 			} catch (SQLException e) {
 				
 				System.out.println("Error excepcion listarUsuarios"+e.getMessage());
@@ -97,7 +95,25 @@ public class DaoUser {
 		
 		public void listarUsuarios() {
 			
-			
+			ResultSet rsLis=null;
+			try {
+				Statement st = con.createStatement();
+				String query = "SELECT * FROM usuario";
+				
+				rsLis = st.executeQuery(query);
+				System.out.println("TABLA USUARIOS");
+				
+				while(rsLis.next()) {
+					System.out.println(rsLis.getString(1)+"\t" +rsLis.getString(2)+"\t" +rsLis.getString(3)+"\t" +
+				rsLis.getString(4)+"\t" +rsLis.getString(5)+"\t" +rsLis.getString(6)+"\t" +rsLis.getString(7)+"\t" 
+				+rsLis.getString(8)+"\t" +rsLis.getString(9));
+				}
+				
+	
+			} catch (SQLException e) {
+				
+				System.out.println("Error excepcion listarUsuarios"+e.getMessage());
+			}
 			
 		}
 		

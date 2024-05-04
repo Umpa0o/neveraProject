@@ -15,7 +15,7 @@ public class conectaDB {
 	 * es común para todos los objetos instanciados de ese tipo
 	 * FINAL por que será constante y no cambiará, como en este caso la dirección del servidor de la DataBase 
 	 * */
-	public static final String urlJD = "jdbc:mysql://localhost:3306/nevera";
+	public static final String urlJDBC = "jdbc:mysql://localhost:3306/nevera";
 	
 	/**variable instance tipo Connection, clase que manejamos gracias al java data base connectivity(JDBC)
 	 * **/
@@ -36,13 +36,13 @@ public class conectaDB {
 				props.put("password", "");
 				props.put("charset", "UTF-8");
 				
-				instance = DriverManager.getConnection(urlJD,props);
+				instance = DriverManager.getConnection(urlJDBC,props);
 				System.out.println("Conectado a la DB nevera");
 			}
 			
 			     
 		} catch (SQLException e) {
-			System.out.println("Excepción: Error al conectarse a la DB nevera");
+			System.out.println("Excepción: Error al conectarse a la DB nevera"+e.getMessage());
 			e.getMessage();
 		}
 	
