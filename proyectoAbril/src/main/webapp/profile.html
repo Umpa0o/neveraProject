@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERFIL</title>
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logoEmpresa">
+                <img alt="Logo de la Empresa" src="img/icon/nevera.png">
+                <h3 class="titleLogo">Fridge 4All</h3>
+                <nav class="menuContacto">
+                    <ul>
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="">Espacios</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
+                        <li><a href="contacto.html">Contact</a></li>
+                        <li><a href=""><img alt="usuarioMenu" src="img/team3.png" style='width: 30%; border-radius: 50%;'></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </header>
+        <h1 class="titlePerfil">Perfil de Usuario <a href="#scriptpara cambiar fondo de pantalla"><img title="Cambiar Fondo de Pantalla del Perfil" src="img/galeri32.png"></a></h1>
+        
+
+        <div class="espacioPerfil">
+            <div class="contenedorIzq">
+                <form name="formProfile" method="" action="">
+                    <div class="fotoUser">
+                        <img class="imgUsuario" alt="Selecciona tu foto de Perfil" src="img/team3.png"><br>
+                        <label for="subirImg" >Selecciona una imagen de Perfil:</label>
+                        <input name="subirImg" type="file" value="Foto de Perfil">
+                        <label for="imgMarco">Selecciona un Marco de Perfil:</label>
+                        <select>
+                            <span src-only>cookies</span>
+                            <option name="" value=""></option>
+                            <option name="Redondo" value="default">Redondo</option>
+                            <option name="Cuadrado" value="square">Cuadrado</option>                        
+                            <option name="CuadradoRedondeado" value="squareCircle">Cuadrado Redondeado</option>
+                            <option name="Estrella" value="stars">Estrella</option>
+                        </select>
+    
+                        <label for="tipoPerfil">Tipo de Perfil: </label>
+                        <select>
+                            <option name="" value=""></option>
+                            <option name="publico" value="public">Público</option>
+                            <option name="privado" value="private">Privado</option>  
+                        </select>
+    
+                    </div>
+    
+                    
+                    
+    
+                </form>
+    
+                <div class="espacioCalendario">
+                    <h4>Calendario</h4>
+                    <div class="calendarioUser">
+                        <img alt="Calendario del Usuario" src="img/calIconBlue.png">
+                        <p>Eventos: </p>
+                        <p>24/04/2024: Caduca! Huevos </p>
+                        <p>16/04/2024: Caduca! Carne picada </p>
+                    </div>
+                    <button class="btnCal" type="button" title="Abrir Calendario">Abrir Calendario <img src="img/calendar32.png"></button>
+    
+                </div>
+    
+                <div class="espacioContactos">
+                    <h4>Contactos y Grupos</h4>
+                    <h5>Grupo Familiar: </h5>
+                    <p>Padre de familia </p>
+                    <p>Hijo Mayor</p>
+                    <h5>Otros contactos: </h5>
+                    <p>Casa de la Abuela del Pueblo</p>
+    
+                </div>
+
+            </div><!--fin contenedorIzquierdo-->
+            
+
+            <div class="contenedorDcho">
+                <!--ESPACIOOS -->
+               <div class="espacioEspacios">
+                   <h4>Espacios</h4>
+                   <!--<span src-only>Aqui van los espacios del usuario desde la DB</span>
+                        iconoEspacio, nombreEspacio, temperaturaEspacio DB, botones renombrar, modificar o eliminar
+                    -->
+                   <ul>
+                    <li><a href=""><img class="icnEspacio" src="img/icon/fridge32.png"> Nevera</a></li>
+                    <li><a href=""><img class="icnEspacio" src="img/icon/congelador32.png"> Congelador</a></li>
+                    <li><a href=""><img class="icnEspacio" src="img/icon/cestaVerdura.png"> Ambiente</a></li>
+                    <li><a href=""><img class="icnEspacio" src="img/icon/pezConge32.png"> Arcón</a></li>
+                   </ul>
+                   <button type="button" title="Guarde sus Espacios de almacenamiento para poder importarlos más tarde">Guardar Espacios <img src="img/icon/disco-flexible.png"></button>
+
+                   <button type="submit" title="Añada un Espacio a su almacenamiento"><img src="img/icon/mas.png">Añadir Espacio</button>
+   
+               </div>
+   
+   
+               <!--Listas -->
+   
+               <div class="espacioListas">
+                   <h4>Listas</h4>
+                    <!--<span src-only>Aqui van las listas del usuario desde la DB</span>
+                        iconoLista, nombreListaa, itemsCheckActivo/itemsTotales, botones renombrar, modificar, COMPARTIR o eliminar
+                    -->
+                    <div class="contListas">
+                        <div id="listaUno">
+                            <table class="tablaProductos">
+                                <thead><h5>Nombre Lista 1</h5></thead>
+                                <tr>
+                                    <th>Producto</th><th>Cantidad</th><th>Precio</th><th>Check</th>
+                                </tr>
+                                <tr>
+                                    <td>Leche 1l</td>
+                                    <td>2</td>
+                                    <td>0,93€</td>
+                                    <td> 1 / 2 </td>
+                                </tr>
+                                <tr>
+                                    <td>Coca-Cola 35mm</td>
+                                    <td>6</td>
+                                    <td>0,84€</td>
+                                    <td> 0 / 6 </td>
+                                </tr>
+                                <tr>
+                                    <td>Atún lata AOV 25gr</td>
+                                    <td>6</td>
+                                    <td>4,95€</td>
+                                    <td> 2/6 </td>
+                                </tr>
+                                <tr>
+                                    <td>Pan de molde 250gr</td>
+                                    <td>1</td>
+                                    <td>1,19€</td>
+                                    <td> 0 / 1 </td>
+                                </tr>
+                            </table>
+                            <div class="btnTabla">
+                                <button type="button">Descargar<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Modificar<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Compartir<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Abrir Lista<img alt="" src="img/icon/copo-de-nieve16.png"></button> 
+                            </div>
+                        </div>
+                        
+
+                        <div id="listaDos">
+                            <table class="tablaProductos">
+                                <thead><h5>Nombre Lista 2</h5></thead>
+                                <tr>
+                                    <th>Producto</th><th>Cantidad</th><th>Precio</th><th>Check</th>
+                                </tr>
+                                <tr>
+                                    <td>Lejía Suelo 5l</td>
+                                    <td>3</td>
+                                    <td>1,09€</td>
+                                    <td> 0 / 3 </td>
+                                </tr>
+                                <tr>
+                                    <td>Pastillas Lavavajillas 36+36 !€</td>
+                                    <td>1</td>
+                                    <td>10,95€</td>
+                                    <td> 0 / 1 </td>
+                                </tr>
+                                <tr>
+                                    <td>Atún lata AOV</td>
+                                    <td>6</td>
+                                    <td>4,95€</td>
+                                    <td> 2/6 </td>
+                                </tr>
+
+                            </table>
+                            <div class="btnTabla">
+                                <button type="button">Descargar<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Modificar<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Compartir<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                                <button type="button">Abrir Lista<img alt="" src="img/icon/copo-de-nieve16.png"></button>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+   
+               </div>
+               <div class="alergias">
+                    <h4>Lista de alérgenos</h4>
+                    <table id="tablaAlergias">
+                        <tr>
+                            <td><img alt="Alergia" src="img/alerg/huevo.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/lactosa.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/gluten.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/mani.png"></td>
+                        </tr>
+                        <tr>
+                            <td><img alt="Alergia" src="img/alerg/mariscos32.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/azucar.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/bajo-en-sodio.png"></td>
+                            <td><img alt="Alergia" src="img/alerg/pescado.png"></td>
+                        </tr>
+                    </table>
+               </div>
+   
+           </div><!--fin contenedorDerecho-->
+
+           
+
+        </div><!--fin div espacioPerfil-->
+
+        
+       
+
+    </div><!--fin div container-->
+    
+</body>
+</html>
+
+<!--
+
+
+
+
+-->

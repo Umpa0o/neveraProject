@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACTO</title>
+    <link rel="stylesheet" type="text/css" href="css/contacto.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logoEmpresa">
+                <img alt="Logo de la Empresa" src="img/icon/nevera.png">
+                <h3>Fridge 4All</h3>
+                <nav class="menuContacto">
+                    <ul>
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="">Espacios</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
+                        <li><a href="contacto.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </header>
+        <h1>Contacta con nosotros</h1>
+
+        <div class="formularioContacto">
+            <form name="formContact" method="" action="">
+                <label for="nameUser">Escribe tu nombre: *</label>
+                <input name="nameUser" type="text" required>
+                <label for="mailUser">Escribe tu dirección de correo: *</label>
+                <input name="mailUser" type="email"  required>
+                <label for="depart">Selecciona a quien va tu comentario: *</label>
+                <select name="depart" required>
+                    <option name=""></option>
+                    <option name="cau">Centro de Atención al Usuario</option>
+                    <option name="desarolloTeam">Equipo de Desarrollo</option>
+                    <option name="rrhh">Recursos Humanos</option>
+                    <option name="redes">Community Manager</option>
+                    <option name="gestionEventos">Gestión de eventos y Colaboraciones</option>
+
+                </select>
+                <label for="asunto">Escribe el Asunto del mensaje: *</label>
+                <input name="asunto" type="text" required>
+                <label name="txtUser">Escribe aquí tu comentario: *</label>
+                <textarea name="txtUser" class="textoUser" cols="45" rows="20" >
+
+                </textarea>
+                <p>* : Campos obligatorios</p>
+
+                <div class="btnFormulario">
+                    <button class="btnReset" type="reset" value="Borrar" title="Borrar contenido del Formulario y empezar de cero">Borrar <img class="btnImg" alt="Papelera para borrar" src="img/borrar32.png"> </button>
+                    <button class="btnEnviar" type="submit" value="Enviar" title="Enviar el Formulario"><img class="btnImg" alt="Enviar" src="img/email32.png"> Enviar </button>
+                </div>
+                
+
+            </form>
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+<!--
+
+<img alt="Pulsa para Borrar el formulario" src="img/email.png">
+
+
+-->

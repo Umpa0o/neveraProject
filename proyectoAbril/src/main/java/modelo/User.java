@@ -182,7 +182,7 @@ public class User {
 			/**Redundancia: como norma en POO cada objeto debe ser dueño de sus acciones, aunque sea redundante
 			 * 	Si el usuario/User(dueño) es el que se inserta, es él mismo quien debe ejecutar esa acción
 			 * */
-			DaoUser dao = new DaoUser();
+			DaoUser dao = new DaoUser(); 
 			dao.insertarUser(this);
 			
 			// !* 

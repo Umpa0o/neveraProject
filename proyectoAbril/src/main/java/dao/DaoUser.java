@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.User;
+/**CLASE DAO: clase reservada para todas las acciones que tiene 
+ * un objeto con iteración en una base de datos
+ * 
+ * */
 
 
 public class DaoUser {
