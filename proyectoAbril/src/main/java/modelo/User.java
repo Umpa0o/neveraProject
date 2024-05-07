@@ -16,9 +16,10 @@ public class User {
 	private String nombreUser;
 	private String email;
 	private String passwordUser;
-	private int esAdmin = 1;		//Por defecto el usuario es 1 usuario normal
 	private String imgUser;
-	private String fechaNacimiento;
+	private int esAdmin = 1;		//Por defecto el usuario es 1 usuario normal
+	
+	//private String fechaNacimiento;
 	private String descripcionPerfil;
 	
 	/***************************************/
@@ -40,16 +41,17 @@ public class User {
 
 
 	/**Constructor User con todos los atributos de la clase User*/
-	public User(int id, String nombreUser, String email, String passwordUser, int esAdmin, String imgUser,
-			String fechaNacimiento, String descripcionPerfil) {
+	public User(int id, String nombreUser, String email, String passwordUser, String imgUser, int esAdmin, 
+			 String descripcionPerfil) {
 		super();
 		this.id = id;
 		this.nombreUser = nombreUser;
 		this.email = email;
 		this.passwordUser = passwordUser;
-		this.esAdmin = esAdmin;
 		this.imgUser = imgUser;
-		this.fechaNacimiento = fechaNacimiento;
+		this.esAdmin = esAdmin;
+		
+		//this.fechaNacimiento = fechaNacimiento;
 		this.descripcionPerfil = descripcionPerfil;
 		
 	}//fin constructor User completo
@@ -133,17 +135,7 @@ public class User {
 		this.imgUser = imgUser;
 	}
 	
-	/**Metodo getFechaNacimiento que recoge la fecha de nacimiento introducida por el usuario
-	 * @return fechaNacimiento String con la fecha de nacimiento del usuario, por la curiosidad del uso de la aplicación*/
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-	
-	/**Metodo setFechaNacimiento donde el atributo apunta asi mismo
-	 * @param String fechaNacimiento  recoge en una cadena de caracteres la fecha de nacimiento del user*/
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+
 	
 	/**Metodo getDescripcionPerfil que recoge la fecha de nacimiento introducida por el usuario
 	 * @return descripcionPerfil String Cadena de caracteres que el usuario puede añadir a su perfil informando de su vida*/
@@ -158,15 +150,6 @@ public class User {
 	}
 	
 	/***************************************/
-	
-	/**Metodo toString de la clase User*/
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", nombreUser=" + nombreUser + ", email=" + email + ", passwordUser=" + passwordUser
-				+ ", esAdmin=" + esAdmin + ", imgUser=" + imgUser + ", fechaNacimiento=" + fechaNacimiento
-				+ ", descripcionPerfil=" + descripcionPerfil + "]";
-	}
 	
 	 
 	
@@ -187,7 +170,40 @@ public class User {
 			
 			// !* 
 			
-		}//fin insertar
+		}//fin insertar()
+	
+	/**Metodo para actualizar los datos de USuarios en la database, creando instancia de la clase DAOUser
+	 * 
+	 * */
+	
+	public void actualizar(int id) throws SQLException{
+		DaoUser dau = new DaoUser();
+		User u = dau.actualizaUser(id);
+		
+		this.setId(u.getId());
+		this.setNombreUser(u.getNombreUser());
+		this.setEmail(u.getEmail());
+		this.setPasswordUser(u.getPasswordUser());
+		this.setImgUser(u.getImgUser());
+		this.setEsAdmin(u.getEsAdmin());
+		this.setDescripcionPerfil(u.getDescripcionPerfil());
+		
+	}//fin actualizar()
+	
+	
+	/***************************************/
+	
+	/**Metodo toString de la clase User*/
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", nombreUser=" + nombreUser + ", email=" + email + ", passwordUser=" + passwordUser
+				+", imgUser=" + imgUser + ", esAdmin=" + esAdmin + ", descripcionPerfil=" + descripcionPerfil + "]";
+	}
+	
+	 
+	
+	/***************************************/
 	
 	
 	

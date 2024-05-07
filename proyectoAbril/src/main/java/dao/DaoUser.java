@@ -24,7 +24,7 @@ public class DaoUser {
 		public static Connection con = null;
 		
 		/**Constructor de DaoUser
-		 * cuando esta clase se instancia se conecta, usando el propio constructor
+		 * cuando esta clase se instancia se conecta, usando el propio constructor DaoUser()
 		 * @throws SQLException
 		 * */
 		public DaoUser() throws SQLException {
@@ -40,8 +40,7 @@ public class DaoUser {
 		 * @throws SQLException
 		 * */
 		public void insertarUser(User ue) {
-			String userDefault = "1";
-
+			
 			try {
 				/*String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario, permiso) "
 					+ "VALUES ('EjemploInsertando','email@insertado.com','contraseña',1) ";*/
@@ -103,32 +102,41 @@ public class DaoUser {
 		}//fin metodo insertarUser()
 		
 		/**metodo listarUsuarios() Crea una coleccion de datos tipo User a null
+		 * @throws SQLException 
 		 * 
 		 * */
 		
-		public ArrayList<User> listarUsuarios() {
+		public ArrayList<User> listarUsuarios() throws SQLException {
+			//Iniciamos la coleccióna  null
 			ArrayList<User> listaUe=null;
-			try {
-				
+			ResultSet rs;
+			
 				String consulta = "SELECT * FROM usuario";
-				PreparedStatement pr =con.prepareStatement(consulta);
-				ResultSet rs = pr.executeQuery();	
-				
+				PreparedStatement sta =con.prepareStatement(consulta);
+				rs = sta.executeQuery();	
+				System.out.println(consulta);
+
 				while(rs.next()) {
 					//si es null lo creamos y si no le añadimos información para no tener que resetearlo
-					if(listaUe==null) {
+					if(listaUe == null) {
 						listaUe = new ArrayList<User>();
+						//System.out.println("pasa por if");
+						//System.out.println("Imprime array craeadovacio"+listaUe);
+						
+						
 					}//fin if
 					
 					listaUe.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
-							rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+							rs.getString(5), rs.getInt(6), rs.getString(7)));
+					
+					//System.out.println("IMprime addd"+listaUe);
+					
+					//System.out.println(rs.getInt(1)+rs.getString(2)+rs.getString(3)+rs.getString(4)+ 
+						//	rs.getInt(5)+ rs.getString(6)+ rs.getString(7)+ rs.getString(8)+ rs.getString(9));
 					
 				}//fin while
-				
-			}catch(SQLException ex) {
-				ex.getMessage();
-				
-			}//fin try/catch
+				System.out.println("ArrayList: "+listaUe);
+			
 			
 			return listaUe;
 			
@@ -138,23 +146,45 @@ public class DaoUser {
 		/**Método listarUeJson() nos comunicaremos con el cliente con json, diferenciando el front del back
 		 * 	hacemos que ntro servlet cree un JSON para devolverle al cliente.
 		 * 	Para Java el contenido de un json es tipo String
+		 * @throws SQLException 
 		 * 
 		 * @build gson.google
 		 * 
 		 * **/
-		public String listarUeJson() {
+		public String listarUeJson() throws SQLException {
 			//generamos cadena vacia
 			String json ="";
 			//creamos libreria/objeto json q nos ayudara a convertir el arrayList en json
 			Gson gson = new Gson();
 			
+			//dentro del JSON queremos que guarde lo que capte el objeto GSON con el método .toJson() con lo q nos devuelva apuntanado a si mismo, listasUsuarios
 			json = gson.toJson(this.listarUsuarios());
+			System.out.println("por json");
 			
 			return json;
 			
-			
-			
+					
 		}// fin listarUeJson()
+		
+		/** metodo actualizaUser devuelve un objeto tipo Usuario por la busqueda en sql de su id
+		 * */
+		public User actualizaUser(int id) throws SQLException {
+			String up = "SELECT * FROM usuario WHERE id=?";
+			
+			PreparedStatement pst = con.prepareStatement(up);
+			pst.setInt(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			rs.next();
+			User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+					rs.getString(5), rs.getInt(6), rs.getString(7));
+			
+			return us;
+			
+			
+			
+		}// fin actualizaUser()
 		
 		
 		

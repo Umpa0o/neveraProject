@@ -24,22 +24,118 @@ import dao.conectaDB;
 public class userManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public static Connection con = null;///borrrar con la continuacion
+	//public static Connection con = null;//borrar con la continuacion
 
     public userManage() {
         super();
         
     }
-	/**
+	/**doGet lo que recibe es el listar usuariosJson cuando recibe llamada xget
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Mensaje default del do GET::  Served at: ").append(request.getContextPath());
+		
+		PrintWriter out = response.getWriter();
+
+		int opcion = Integer.parseInt(request.getParameter("op")) ;
+		
+		if(opcion == 2) {
+			/**EDITAR usuarios con el get**/
+			int id = Integer.parseInt(request.getParameter("id")) ;
+			//editar
+			User u = new User();
+			try {
+				u.actualizar(id);
+				System.out.println("entra a actualizar");
+				System.out.println(u);
+			} catch (SQLException e) {
+
+				e.getMessage();
+			}//fin try/catch
+			
+		}else if(opcion == 1){
+			//listar
+			DaoUser daoUs;
+			try {
+				
+				daoUs = new DaoUser();
+				out.print(daoUs.listarUeJson());
+				
+			} catch (SQLException e) {
+
+				e.getMessage();
+			}//fin try/catch
+			
+		}//fin ifelse
+		
+		//switch para el panelAdministrador para borrar y editar users
+		/*switch(opcion) {
+			case 1:
+				System.out.println("Listar Usuarios: ");
+				
+				//////**LISTAR usuarios con el get**
+				DaoUser daoUs;
+				try {
+					
+					daoUs = new DaoUser();
+					out.print(daoUs.listarUeJson());
+					
+				} catch (SQLException e) {
+
+					e.getMessage();
+				}//fin try/catch
+				
+				
+				break;
+			//****fin case1 listarUsuario
+		
+			case 2:
+				System.out.println("Editar Usuario: "+id);
+				
+				if(opcion == 2) {
+					User u = new User();
+					try {
+						u.actualizar(id);
+					} catch (SQLException e) {
+
+						e.getMessage();
+					}//fin try/catch
+					
+				}//fin if
+				
+			
+				break;
+			//***fin case2 editarUsuario
+				
+			case 3:
+				System.out.println("Borrar Usuario: "+id);
+				break;
+			//****fin case3 borrarUsuario
+				
+			default:
+				break;
+		}//fin switch
+		
+		**/
+//		
+		/**LISTAR usuarios con el get**/
+		/*DaoUser daoUs;
+		try {
+			
+			daoUs = new DaoUser();
+			out.print(daoUs.listarUeJson());
+			
+		} catch (SQLException e) {
+
+			e.getMessage();
+		}//fin try/catch
+		*/
+		
 	}//fin doGet
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// doGet(request, response);
+
 	//	int id = Integer.parseInt(request.getParameter("id"));
 		try {
 		String nombreUser = request.getParameter("nameUser");
@@ -62,9 +158,12 @@ public class userManage extends HttpServlet {
 			System.out.println("Error al insertar");
 			e.getMessage();
 		}
+		
+		response.sendRedirect("gestionAdmin.html");
+		
 		///////////////////////////////////////////////////////////////////////////////////////
 		/*****************BORRAR A CONTINUACION con la variable global Connection con****************/
-		con = conectaDB.getConexion();
+		/*con = conectaDB.getConexion();
 		ResultSet rsLis=null;
 		try {
 			Statement st = con.createStatement();
@@ -106,29 +205,10 @@ public class userManage extends HttpServlet {
 			
 			System.out.println("Error excepcion listarUsuarios"+e.getMessage());
 		}
-		
+		*/
 		
 		///////////////////////////////////////////////////////////////////////////////////////
-		
-		/*try {
-			//si el elemento no tenia id
-			if(id == "") {
-				ue.insertar();
-				System.out.println("Usuario insertado");
-			} else {		
-				int idCambiado = Integer.parseInt(id);
-				ue.setId(idCambiado);
-				System.out.println("Error al insertar");
-	
-			}//fin if/else id vacio, no existe en la DB
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-			e.getMessage();
-			System.out.println("Error al insertar");
-		}//fin try/catch
-		
-		*/
+
 		
 		
 		
