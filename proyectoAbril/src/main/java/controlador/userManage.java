@@ -47,7 +47,9 @@ public class userManage extends HttpServlet {
 			try {
 				u.actualizar(id);
 				System.out.println("entra a actualizar");
-				System.out.println(u);
+				System.out.println(u.toString());
+				out.print(u.darJson());
+				System.out.println(u.darJson());
 			} catch (SQLException e) {
 
 				e.getMessage();

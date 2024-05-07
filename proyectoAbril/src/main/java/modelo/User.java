@@ -2,6 +2,8 @@ package modelo;
 
 import java.sql.SQLException;
 
+import com.google.gson.Gson;
+
 import dao.DaoUser;
 
 
@@ -178,17 +180,28 @@ public class User {
 	
 	public void actualizar(int id) throws SQLException{
 		DaoUser dau = new DaoUser();
-		User u = dau.actualizaUser(id);
+		User aux = dau.actualizaUser(id);
 		
-		this.setId(u.getId());
-		this.setNombreUser(u.getNombreUser());
-		this.setEmail(u.getEmail());
-		this.setPasswordUser(u.getPasswordUser());
-		this.setImgUser(u.getImgUser());
-		this.setEsAdmin(u.getEsAdmin());
-		this.setDescripcionPerfil(u.getDescripcionPerfil());
+		this.setId(aux.getId());
+		this.setNombreUser(aux.getNombreUser());
+		this.setEmail(aux.getEmail());
+		this.setPasswordUser(aux.getPasswordUser());
+		this.setImgUser(aux.getImgUser());
+		this.setEsAdmin(aux.getEsAdmin());
+		this.setDescripcionPerfil(aux.getDescripcionPerfil());
 		
 	}//fin actualizar()
+	
+	public String darJson() {
+		String json ="";
+		Gson gson = new Gson();
+		
+		json = gson.toJson(this);
+		
+		return json;
+		
+		
+	}//findarJson()
 	
 	
 	/***************************************/
