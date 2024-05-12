@@ -178,7 +178,7 @@ public class User {
 	 * 
 	 * */
 	
-	public void actualizar(int id) throws SQLException{
+	public void actualizaUser(int id) throws SQLException{
 		DaoUser dau = new DaoUser();
 		User aux = dau.actualizaUser(id);
 		
@@ -189,6 +189,7 @@ public class User {
 		this.setImgUser(aux.getImgUser());
 		this.setEsAdmin(aux.getEsAdmin());
 		this.setDescripcionPerfil(aux.getDescripcionPerfil());
+		System.out.println(aux.toString());
 		
 	}//fin actualizar()
 	

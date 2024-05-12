@@ -27,7 +27,7 @@
         <h1>Contacta con nosotros</h1>
 
         <div class="formularioContacto">
-            <form name="formContact" method="" action="">
+            <form name="formContact" method="post" action="contactoControlador">
                 <label for="nameUser">Escribe tu nombre: *</label>
                 <input name="nameUser" type="text" required>
                 <label for="mailUser">Escribe tu dirección de correo: *</label>
@@ -45,7 +45,7 @@
                 <label for="asunto">Escribe el Asunto del mensaje: *</label>
                 <input name="asunto" type="text" required>
                 <label name="txtUser">Escribe aquí tu comentario: *</label>
-                <textarea name="txtUser" class="textoUser" cols="45" rows="20" >
+                <textarea name="txtUser" id="textoUser" cols="45" rows="20" >
 
                 </textarea>
                 <p>* : Campos obligatorios</p>

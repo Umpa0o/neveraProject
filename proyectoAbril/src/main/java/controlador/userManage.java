@@ -36,20 +36,27 @@ public class userManage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-
+		int id;
 		int opcion = Integer.parseInt(request.getParameter("op")) ;
+		System.out.println("estamos en la opcion  "+opcion);
 		
 		if(opcion == 2) {
 			/**EDITAR usuarios con el get**/
-			int id = Integer.parseInt(request.getParameter("id")) ;
-			//editar
-			User u = new User();
+			id = Integer.parseInt(request.getParameter("id")) ;
+			System.out.println("Queremo actualizar el id: "+id);
+			
+			User us = new User();
+			System.out.println(us);
 			try {
-				u.actualizar(id);
+				us.actualizaUser(id);
+				System.out.println(us);
 				System.out.println("entra a actualizar");
-				System.out.println(u.toString());
-				out.print(u.darJson());
-				System.out.println(u.darJson());
+				
+				out.print("aqui"+us.darJson());
+				System.out.println(us.darJson());
+				
+				
+				
 			} catch (SQLException e) {
 
 				e.getMessage();
@@ -62,6 +69,7 @@ public class userManage extends HttpServlet {
 				
 				daoUs = new DaoUser();
 				out.print(daoUs.listarUeJson());
+				System.out.println("Estamos en la opcion 1");
 				
 			} catch (SQLException e) {
 
@@ -119,19 +127,7 @@ public class userManage extends HttpServlet {
 		}//fin switch
 		
 		**/
-//		
-		/**LISTAR usuarios con el get**/
-		/*DaoUser daoUs;
-		try {
-			
-			daoUs = new DaoUser();
-			out.print(daoUs.listarUeJson());
-			
-		} catch (SQLException e) {
 
-			e.getMessage();
-		}//fin try/catch
-		*/
 		
 	}//fin doGet
 
@@ -140,77 +136,31 @@ public class userManage extends HttpServlet {
 
 	//	int id = Integer.parseInt(request.getParameter("id"));
 		try {
-		String nombreUser = request.getParameter("nameUser");
-		String emailUser =request.getParameter("mailUser");
-		String pswUser = request.getParameter("passUser");
-
-		
-		//User(String nombreUser, String email, String passwordUser) 
-		User ue = new User(nombreUser, emailUser, pswUser);
-		System.out.println(ue.toString());
-		
-		DaoUser dao;
+			String nombreUser = request.getParameter("nameUser");
+			String emailUser =request.getParameter("mailUser");
+			String pswUser = request.getParameter("passUser");
+	
+			
+			//User(String nombreUser, String email, String passwordUser) 
+			User ue = new User(nombreUser, emailUser, pswUser);
+			System.out.println(ue.toString());
+			
+			DaoUser dao;
 		
 			//ue.insertar();
 			dao = new DaoUser();
 			dao.insertarUser(ue);
 			
 			System.out.println("Usuario insertado");
+			
 		} catch (SQLException e) {
 			System.out.println("Error al insertar");
 			e.getMessage();
 		}
-		
+		//mandamos a la página html de gestion administrador
 		response.sendRedirect("gestionAdmin.html");
 		
-		///////////////////////////////////////////////////////////////////////////////////////
-		/*****************BORRAR A CONTINUACION con la variable global Connection con****************/
-		/*con = conectaDB.getConexion();
-		ResultSet rsLis=null;
-		try {
-			Statement st = con.createStatement();
-			String query = "SELECT * FROM usuario";
-			
-			rsLis = st.executeQuery(query);
-			System.out.println("TABLA USUARIOS");
-			response.setContentType("text/html");
-			PrintWriter pw = response.getWriter();
-			pw.println("<div>");
-			pw.println("<table>");
-			pw.println("<tr><th></th></tr>");
-			
-			
-			while(rsLis.next()) {
-				System.out.println(rsLis.getString(1)+"\t" +rsLis.getString(2)+"\t" +rsLis.getString(3)+"\t" +
-			rsLis.getString(4)+"\t" +rsLis.getString(5)+"\t" +rsLis.getString(6)+"\t" +rsLis.getString(7)+"\t" 
-			+rsLis.getString(8)+"\t" +rsLis.getString(9));
-				
-				pw.println("<tr><td>"+rsLis.getString(1)+"</td>");
-				pw.println("<td>"+rsLis.getString(2)+"</td>");
-				pw.println("<td>"+rsLis.getString(3)+"</td>");
-				pw.println("<td>"+rsLis.getString(4)+"</td>");
-				pw.println("<td>"+rsLis.getString(5)+"</td>");
-				pw.println("<td>"+rsLis.getString(6)+"</td>");
-				pw.println("<td>"+rsLis.getString(7)+"</td>");
-				pw.println("<td>"+rsLis.getString(8)+"</td>");
-				pw.println("<td>"+rsLis.getString(9)+"</td>");
-				pw.println("</tr>");
-			}
-			
-
-			
-			pw.println("</table>");
-			pw.println("</div>");
-			
-
-		} catch (SQLException e) {
-			
-			System.out.println("Error excepcion listarUsuarios"+e.getMessage());
-		}
-		*/
 		
-		///////////////////////////////////////////////////////////////////////////////////////
-
 		
 		
 		

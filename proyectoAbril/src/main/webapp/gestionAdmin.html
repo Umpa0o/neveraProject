@@ -20,10 +20,13 @@
     	}
     </style>
 
-    <script type="text/javascript">
-    //evento, cuando todo se alla cargado ejecuta esa función
-     
-    	function llamada(){
+   <!--<script src="jS/jsGestionAdmin.js"></script> --> 
+	<script type="text/javascript">
+		
+
+		//evento, cuando todo se alla cargado ejecuta esa función
+		     
+		function llamada(){
     		//como parámetro ponemos el nombre del Servlet que queremos leer
     		fetch('userManage?op=1')
     		//con la respuesta(response) del servidor la pasamos a json
@@ -56,7 +59,7 @@
     			//html += "<td>"+datosUsuarios[i].fechaNacimiento+"</td>";
     			html += "<td>"+datosUsuarios[i].descripcionPerfil+"</td>";
    				/**/
-   				html += "<td><a href='userManage?id="+datosUsuarios[i].id+"'>Editar</a>"+"</td>";
+   				html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
    				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
    				html += "<td><a href='#' type=''>Borrar</a></td>";
     			
@@ -69,15 +72,65 @@
     		
     		document.getElementById("listado_usuarios").innerHTML = html;
     		/**/
-    	}//fin pintar tabla
+    	}//fin pintar tablaListadoUsuarios
+    	
+    	
+    	function llamadaEditar(id,op){
+    		//como parámetro ponemos el nombre del Servlet que queremos leer
+    		fetch('userManage?id='+id+'op='+op)
+    		//con la respuesta(response) del servidor la pasamos a json
+    		.then(response => response.json())
+    		//los datos que recibimos(data) llame a una función pintarTablaUsuarios
+    		.then(data => pintarTablaUsuarios(data))
+    	}
+    	
+    	function tablaEditar(datitos){
+		console.log(datitos);
+    		
+    		let html = "<table id='editarUsuarios'>";
+    		html += "<h4>"+"editar usuario"+"</h4>";
+    		html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
+    		"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
+    		//<th>fechaNacimiento</th>
+    		
+    			html += "<tr>";
+    			
+/**************WORKINGG**/
+    			html += "<tr><td>"+"<input type='text' name='id'> "+"</td>";
+    			html += "<td>"+"<input type='text' name='nombre'> "+"</td>";
+    			html += "<td>"+"<input type='text' name='email' > "+"</td>";
+    			html += "<td>"+"<input type='text' name='password' > "+"</td>";
+    			html += "<td>"+"<input type='text' name='imgUser' > "+"</td>";
+    			html += "<td>"+"<input type='text' name='esAdmin' > "+"</td>";
+    			html += "<td>"+"<input type='text' name='descripcionPerfil' > "+"</td>";
+   				/**/
+   				html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>ACTUALIZAR</a>"+"</td>";
+   				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
+   				html += "<td><a href='#' type=''>CANCELAR</a></td>";
+    			
+    			html += "</tr>";
+
+    		
+    		html +=  "</table>";
+    		
+    		document.getElementById("usuarioAeditar").innerHTML = html;
+    	}
+    	
+    	/***  enlace Editar pasar a boton con evento para pintar el div para modificar usuario**/
+    	
 
     window.onload = function (){
 		llamada();
+
+
+		//llamada(id, op);
     }
-    	
-    
-    
+
+
     </script>
+
+
+
 
 </head>
 <body>
@@ -99,6 +152,7 @@
 
         </header>
         <h1>Panel Administrador</h1>
+        <div id="usuarioAeditar"></div>
 
         <div id="listado_usuarios">
 			en este div pintaremos cosas

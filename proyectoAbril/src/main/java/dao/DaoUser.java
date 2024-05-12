@@ -160,6 +160,7 @@ public class DaoUser {
 			//dentro del JSON queremos que guarde lo que capte el objeto GSON con el método .toJson() con lo q nos devuelva apuntanado a si mismo, listasUsuarios
 			json = gson.toJson(this.listarUsuarios());
 			System.out.println("por json");
+			//System.out.println(json);
 			
 			return json;
 			
@@ -169,14 +170,15 @@ public class DaoUser {
 		/** metodo actualizaUser devuelve un objeto tipo Usuario por la busqueda en sql de su id
 		 * */
 		public User actualizaUser(int id) throws SQLException {
-			String up = "SELECT * FROM usuario WHERE id=?";
+			String consulta = "SELECT * FROM usuario WHERE id_usuario=?";
 			
-			PreparedStatement pst = con.prepareStatement(up);
-			//solo mandamos el id para seleccionar el usuario  /**3h23m*/
+			PreparedStatement pst = con.prepareStatement(consulta);
+			//solo mandamos el id para seleccionar el usuario  /**3h23m 6abril*/
+			
 			pst.setInt(1, id);
 			
 			ResultSet rs = pst.executeQuery();
-			
+			System.out.println(consulta);
 			rs.next();
 			User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
 					rs.getString(5), rs.getInt(6), rs.getString(7));
@@ -185,6 +187,7 @@ public class DaoUser {
 			
 			return us;
 			
+	
 			
 			
 		}// fin actualizaUser()

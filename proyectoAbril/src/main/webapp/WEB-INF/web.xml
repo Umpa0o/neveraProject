@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>contactoControlador</display-name>
+    <servlet-name>contactoControlador</servlet-name>
+    <servlet-class>controlador.contactoControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>contactoControlador</servlet-name>
+    <url-pattern>/contactoControlador</url-pattern>
+  </servlet-mapping>
 </web-app>
