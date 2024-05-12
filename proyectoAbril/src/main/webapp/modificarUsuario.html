@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificando Usuario</title>
+    <link rel="stylesheet" type="text/css" href="css/contacto.css">
+</head>
+<style>
+    /*#editarTablaUsuario{
+        background-color: red;
+        border: 1px solid black;
+        height:200px;
+        width: 800px;
+        margin-left:-140px;
+    }*/
+    #editarTablaUsuario td{
+        border: 1px solid black;
+        padding: 2px;
+       
+    }
+    #editarTablaUsuario input{
+        width: 90px;
+    }
+    #editarTablaUsuario a{
+        color: black;
+        background-color: greenyellow;
+    }
+</style>
+
+<script type="text/javascript">
+
+	function llamada(id, op){
+		
+		fetch('userManage?id='+id+'&op='+op)
+		.then(response => response.json())
+		.then(data => pintarParaEditar(data))
+		console.log();
+	}
+
+    /** Expresiones regulares
+	    Para identificar el contenido del GET con el nombre NAME
+	    Función de jS para obtener el valor de un parámetro en el GET
+    */
+    function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	    results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}//fin exp regular
+
+	
+	function pintarParaEditar(datos){
+		
+		document.getElementById("id").value = datos.id;
+		document.getElementById("nombre").value = datos.nombre;
+		document.getElementById("email").value = datos.email;
+		document.getElementById("password").value = datos.passwordUser;
+		document.getElementById("imgUser").value = datos.imgUser;
+		document.getElementById("esAdmin").value = datos.esAdmin;
+		document.getElementById("descripcionPerfil").value = datos.descripcionPerfil;/**/
+		console.log(datos.id);
+		console.log(datos.nombreUser);
+		
+		
+		
+		//document.getElementById("editarTablaUsuario").innerHTML = html;
+	}
+	
+	
+	//Llamamos al servlet, cuando ya esste toda la pagina cargada hacemos una llamada con el fetch
+	window.onload = function(){
+		let id= getParameterByName("id");
+		let op = getParameterByName("op");
+		//var urlParams = new URLSearchParams(window.location.search); 
+		//var id = urlParams.get('id'); 
+		console.log("funcion window.onload modUser.html intentamos modificar el " +id+" y la opcion es "+op);
+		llamada(id,op);
+	}//fin windor.onload
+	
+	
+	
+	
+
+</script>
+<body>
+    <div class="container">
+        <header>
+            <div class="logoEmpresa">
+                <img alt="Logo de la Empresa" src="img/icon/nevera.png">
+                <h3>Fridge 4All</h3>
+                <nav class="menuContacto">
+                    <ul>
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="">Espacios</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="contacto.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </header>
+<h4>editar usuario</h4>
+        <form method="" action="useManage" name="editarTablaUsuario" >
+        		<label for="id">ID de usuario: *</label>
+                <input name="id" type="text" required>
+                
+        		<label for="nombre">Nombre de usuario: *</label>
+                <input name="nombre" type="text" required>
+                
+                <label for="email">Correo electrónico: *</label>
+                <input name="email" type="mail"  required>
+                
+                <label for="password">Contraseña: *</label>
+                <input name="password" type="text"  required>
+                
+                <label for="imgUser">Imagen de usuario: </label>
+                <input name="imgUser" type="text" >
+                
+                <label for="esAdmin">Permiso: *</label>
+                <input name="esAdmin" type="text"  required>
+                
+                <label for="descripcionPerfil">descripcionPerfil: </label>
+                <input name="descripcionPerfil" type="text"  ><br>
+                
+                <span>[* Campo obligatorio]</span><br>
+                
+                <button type="submit">Enviar</button>
+           
+           <!-- 
+           !!!!!
+            <table id='editarUsuarios'>
+                
+                <tr><th>id</th>
+                    <th>nombreUser</th>
+                    <th>email</th>
+                    <th>passwordUser</th>
+                    <th>imgUser</th>
+                    <th>Permiso</th>
+                    <th>descripcionPerfil</th>
+                </tr>
+
+                <tr>          
+                    <td><input type='text' name='id' maxlength="4"> </td>
+                    <td><input type='text' name='nombre'> </td>
+                    <td><input type='text' name='email' > </td>
+                    <td><input type='text' name='password' > </td>
+                    <td><input type='text' name='imgUser' > </td>
+                    <td><input type='text' name='esAdmin' > </td>
+                    <td><input type='text' name='descripcionPerfil' > </td>
+                    
+                    <td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>ACTUALIZAR</a></td>
+        
+                    <td><a href='#' type=''>CANCELAR</a></td>
+                    
+                </tr>
+        
+                
+                </table>
+	 	!!!!!  -->
+
+        </form>
+    
+    
+</body>
+</html>

@@ -52,7 +52,8 @@ public class userManage extends HttpServlet {
 				System.out.println(us);
 				System.out.println("entra a actualizar");
 				
-				out.print("aqui"+us.darJson());
+				//out.print("aqui"+us.darJson());
+				out.print(us.darJson());
 				System.out.println(us.darJson());
 				
 				

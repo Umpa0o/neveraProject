@@ -56,10 +56,9 @@
     			html += "<td>"+datosUsuarios[i].imgUser+"</td>";
     			html += "<td>"+datosUsuarios[i].esAdmin+"</td>";
     			
-    			//html += "<td>"+datosUsuarios[i].fechaNacimiento+"</td>";
     			html += "<td>"+datosUsuarios[i].descripcionPerfil+"</td>";
    				/**/
-   				html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
+   				html += "<td><a href='modificarUsuario.html?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
    				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
    				html += "<td><a href='#' type=''>Borrar</a></td>";
     			
@@ -84,6 +83,9 @@
     		.then(data => pintarTablaUsuarios(data))
     	}
     	
+    	
+    	/*** 
+    	
     	function tablaEditar(datitos){
 		console.log(datitos);
     		
@@ -95,7 +97,7 @@
     		
     			html += "<tr>";
     			
-/**************WORKINGG**/
+			/**************WORKINGG
     			html += "<tr><td>"+"<input type='text' name='id'> "+"</td>";
     			html += "<td>"+"<input type='text' name='nombre'> "+"</td>";
     			html += "<td>"+"<input type='text' name='email' > "+"</td>";
@@ -103,7 +105,7 @@
     			html += "<td>"+"<input type='text' name='imgUser' > "+"</td>";
     			html += "<td>"+"<input type='text' name='esAdmin' > "+"</td>";
     			html += "<td>"+"<input type='text' name='descripcionPerfil' > "+"</td>";
-   				/**/
+   				
    				html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>ACTUALIZAR</a>"+"</td>";
    				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
    				html += "<td><a href='#' type=''>CANCELAR</a></td>";
@@ -116,7 +118,7 @@
     		document.getElementById("usuarioAeditar").innerHTML = html;
     	}
     	
-    	/***  enlace Editar pasar a boton con evento para pintar el div para modificar usuario**/
+    	 enlace Editar pasar a boton con evento para pintar el div para modificar usuario**/
     	
 
     window.onload = function (){
