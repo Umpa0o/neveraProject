@@ -190,6 +190,7 @@ public class User {
 		this.setEsAdmin(aux.getEsAdmin());
 		this.setDescripcionPerfil(aux.getDescripcionPerfil());
 		System.out.println(aux.toString());
+
 		
 	}//fin actualizar()
 	

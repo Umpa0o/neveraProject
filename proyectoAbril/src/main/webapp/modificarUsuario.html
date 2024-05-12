@@ -30,7 +30,7 @@
 
 <script type="text/javascript">
 
-	function llamada(id, op){
+	function llamadada(id, op){
 		
 		fetch('userManage?id='+id+'&op='+op)
 		.then(response => response.json())
@@ -52,8 +52,8 @@
 	
 	function pintarParaEditar(datos){
 		
-		document.getElementById("id").value = datos.id;
-		document.getElementById("nombre").value = datos.nombre;
+		document.getElementById("idUser").value = datos.id;
+		document.getElementById("nombre").value = datos.nombreUser;
 		document.getElementById("email").value = datos.email;
 		document.getElementById("password").value = datos.passwordUser;
 		document.getElementById("imgUser").value = datos.imgUser;
@@ -64,7 +64,7 @@
 		
 		
 		
-		//document.getElementById("editarTablaUsuario").innerHTML = html;
+		document.getElementById("editarTablaUsuario").innerHTML = html;
 	}
 	
 	
@@ -73,9 +73,12 @@
 		let id= getParameterByName("id");
 		let op = getParameterByName("op");
 		//var urlParams = new URLSearchParams(window.location.search); 
-		//var id = urlParams.get('id'); 
-		console.log("funcion window.onload modUser.html intentamos modificar el " +id+" y la opcion es "+op);
-		llamada(id,op);
+		//var id2 = urlParams.get('id'); 
+		//console.log("segunda forma de conseguir el id con la url del método GET: "+ id2);
+		
+		llamadada(id,op);
+		
+		console.log("funcion window.onload modUser.html intentamos modificar el ID " +id+" y la opcion es "+op);
 	}//fin windor.onload
 	
 	
@@ -103,8 +106,8 @@
         </header>
 <h4>editar usuario</h4>
         <form method="" action="useManage" name="editarTablaUsuario" >
-        		<label for="id">ID de usuario: *</label>
-                <input name="id" type="text" required>
+        		<label for="idUser">ID de usuario: *</label>
+                <input name="idUser" type="text" required>
                 
         		<label for="nombre">Nombre de usuario: *</label>
                 <input name="nombre" type="text" required>
