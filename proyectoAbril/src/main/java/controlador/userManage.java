@@ -36,13 +36,13 @@ public class userManage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-		int id;
+		
 		int opcion = Integer.parseInt(request.getParameter("op")) ;
 		System.out.println("estamos en la opcion  "+opcion);
 		
 		if(opcion == 2) {
 			/**EDITAR usuarios con el get**/
-			id = Integer.parseInt(request.getParameter("id")) ;
+			int id = Integer.parseInt(request.getParameter("id")) ;
 			System.out.println("Queremo actualizar el id: "+id);
 			
 			User us = new User();
@@ -140,6 +140,8 @@ public class userManage extends HttpServlet {
 			String nombreUser = request.getParameter("nameUser");
 			String emailUser =request.getParameter("mailUser");
 			String pswUser = request.getParameter("passUser");
+			
+			
 	
 			
 			//User(String nombreUser, String email, String passwordUser) 
@@ -153,6 +155,15 @@ public class userManage extends HttpServlet {
 			dao.insertarUser(ue);
 			
 			System.out.println("Usuario insertado");
+			/**if(id== "") {
+				ue.insertar();
+				System.out.println("Usuario insertado");
+			}else {
+				int idInt = Integer.parseInt(id);
+				ue.setId(idInt);
+			}
+			*/
+			
 			
 		} catch (SQLException e) {
 			System.out.println("Error al insertar");

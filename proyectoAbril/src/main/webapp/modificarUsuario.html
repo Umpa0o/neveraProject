@@ -30,12 +30,16 @@
 
 <script type="text/javascript">
 
-	function llamadada(id, op){
+	function peticion(id, op){
 		
-		fetch('userManage?id='+id+'&op='+op)
-		.then(response => response.json())
-		.then(data => pintarParaEditar(data))
-		console.log();
+		fetch('userManage?id='+id+'&op='+op)	//promesa, damos xhecho qrecibimos los datos
+		.then(response => response.json())		//que llegue un json 
+		//.then(data => pintarParaEditar(data))	//que hacer con los datos
+		.then(datos => {
+			console.log(datos);
+			tablaEdita(datos);
+		} )
+		.catch(err => console.log(err))		//sacar xconsola los errores si los hiviera
 	}
 
     /** Expresiones regulares
@@ -50,21 +54,53 @@
 	}//fin exp regular
 
 	
-	function pintarParaEditar(datos){
+	
+	function tablaEdita(dat){
 		
-		document.getElementById("idUser").value = datos.id;
-		document.getElementById("nombre").value = datos.nombreUser;
-		document.getElementById("email").value = datos.email;
-		document.getElementById("password").value = datos.passwordUser;
-		document.getElementById("imgUser").value = datos.imgUser;
-		document.getElementById("esAdmin").value = datos.esAdmin;
-		document.getElementById("descripcionPerfil").value = datos.descripcionPerfil;/**/
-		console.log(datos.id);
-		console.log(datos.nombreUser);
+		let html = "<table id='editarUsuario'>";
+		html += "<h4>"+"CABECERA TABLA"+"</h4>";
+		html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
+		"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
+		//<th>fechaNacimiento</th>
+		
+		html += "<tr>";
+			html += "<td>"+dat.id+"</td>";
+			html += "<td>"+dat.nombreUser+"</td>";
+			html += "<td>"+dat.email+"</td>";
+			html += "<td>"+dat.passwordUser+"</td>";
+			html += "<td>"+dat.imgUser+"</td>";
+			html += "<td>"+dat.esAdmin+"</td>";
+			
+			html += "<td>"+dat.descripcionPerfil+"</td>";
+			/**/
+			html += "<td><a href='modificarUsuario.html?id="+dat.id+"&op=2'>Editar</a>"+"</td>";
+			//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
+			html += "<td><a href='#' type=''>Borrar</a></td>";
+		
+		html += "</tr>";
+		html +=  "</table>";	
+		
+		document.getElementById("modificaUser").innerHTML = html;
+
+	}//fin tablaEdita
+	
+	function edita(datosMod){
+		//var urlParams = new URLSearchParams(window.location.search); 
+		//var id2 = urlParams.get('id');
+		
+		document.getElementById("idUser").value = datosMod.id.toString();
+		document.getElementById("nombre").value = datosMod.nombreUser;
+		document.getElementById("email").value = datosMod.email;
+		document.getElementById("password").value = datosMod.passwordUser;
+		document.getElementById("imgUser").value = datosMod.imgUser;
+		document.getElementById("esAdmin").value = datosMod.esAdmin;
+		document.getElementById("descripcionPerfil").value = datosMod.descripcionPerfil;/**/
+		console.log(datosMod.id);
+		console.log(datosMod.nombreUser);
 		
 		
 		
-		document.getElementById("editarTablaUsuario").innerHTML = html;
+		//document.getElementById("editarTablaUsuario").innerHTML = html;
 	}
 	
 	
@@ -76,7 +112,7 @@
 		//var id2 = urlParams.get('id'); 
 		//console.log("segunda forma de conseguir el id con la url del método GET: "+ id2);
 		
-		llamadada(id,op);
+		peticion(id,op);
 		
 		console.log("funcion window.onload modUser.html intentamos modificar el ID " +id+" y la opcion es "+op);
 	}//fin windor.onload
@@ -105,9 +141,11 @@
 
         </header>
 <h4>editar usuario</h4>
+		<div id="modificaUser"></div>
+		
         <form method="" action="useManage" name="editarTablaUsuario" >
         		<label for="idUser">ID de usuario: *</label>
-                <input name="idUser" type="text" required>
+                <input name="idUser" type="" >
                 
         		<label for="nombre">Nombre de usuario: *</label>
                 <input name="nombre" type="text" required>
