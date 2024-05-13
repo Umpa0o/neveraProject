@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificando Usuario</title>
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
+    <script src="js/editUs.js"></script>
 </head>
 <style>
     /*#editarTablaUsuario{
@@ -14,22 +15,37 @@
         width: 800px;
         margin-left:-140px;
     }*/
-    #editarTablaUsuario td{
-        border: 1px solid black;
-        padding: 2px;
-       
+    
+    #modificaUser{
+    	padding: 20px 0px;
+    	border-bottom: 1px solid black;
     }
-    #editarTablaUsuario input{
-        width: 90px;
+    #modificaUser {
+    	border: 1px solid black;
     }
-    #editarTablaUsuario a{
-        color: black;
-        background-color: greenyellow;
-    }
+    
+    #editarUsuario td{
+    	display:block;
+    	
+    	height:30px;
+   	}
+   	
+   	#editarUsuario span{
+	   	font-weight:bolder;
+	   	margin-right: 10px;
+   	}
+   /*	#editarUsuario input{
+
+   	}*/
+   	
+   	
+   	
+   	
+   	
 </style>
 
 <script type="text/javascript">
-
+	//FUNCIONES
 	function peticion(id, op){
 		
 		fetch('userManage?id='+id+'&op='+op)	//promesa, damos xhecho qrecibimos los datos
@@ -38,6 +54,7 @@
 		.then(datos => {
 			console.log(datos);
 			tablaEdita(datos);
+			//edita(datos);
 		} )
 		.catch(err => console.log(err))		//sacar xconsola los errores si los hiviera
 	}
@@ -58,24 +75,26 @@
 	function tablaEdita(dat){
 		
 		let html = "<table id='editarUsuario'>";
-		html += "<h4>"+"CABECERA TABLA"+"</h4>";
-		html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
-		"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
+		html += "<h4>"+"Editar Usuario"+"</h4>";
+		//html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
+		//"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
 		//<th>fechaNacimiento</th>
 		
 		html += "<tr>";
-			html += "<td>"+dat.id+"</td>";
-			html += "<td>"+dat.nombreUser+"</td>";
-			html += "<td>"+dat.email+"</td>";
-			html += "<td>"+dat.passwordUser+"</td>";
-			html += "<td>"+dat.imgUser+"</td>";
-			html += "<td>"+dat.esAdmin+"</td>";
+			html += "<td><span>id</span> <input type='text' name='id' value='"+dat.id+"'></td>";
+			html += "<td><span>Nombre</span> <input type='text' name='nombreUser' value='"+dat.nombreUser+"'></td>";
+			html += "<td><span>Email</span> <input type='text' name='email' value='"+dat.email+"'></td>";
+			html += "<td><span>Contraseña</span> <input type='text' name='passwordUser' value='"+dat.passwordUser+"'></td>";
+			html += "<td><span>Imagen</span> <input type='text' name='imgUser' value='"+dat.imgUser+"'></td>";
+			html += "<td><span>Permiso</span> <input type='text' name='esAdmin' value='"+dat.esAdmin+"'></td>";
 			
-			html += "<td>"+dat.descripcionPerfil+"</td>";
+			html += "<td><span>Descripción</span> <textarea rows='3' cols='40' name='descripcionPerfil' placeholder='"+dat.descripcionPerfil+"'></textarea></td>";
 			/**/
-			html += "<td><a href='modificarUsuario.html?id="+dat.id+"&op=2'>Editar</a>"+"</td>";
+			//html += "<td><a type='' href='modificarUsuario.html?id="+dat.id+"&op=2'>Editar</a>"+"</td>";
 			//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
-			html += "<td><a href='#' type=''>Borrar</a></td>";
+			html += "<td></td>";
+			html += "<td><button name='btnEditar' type='submit'>Guardar Cambios</button>  <button href='#' type=''>Cancelar</button></td>";
+			html += "";
 		
 		html += "</tr>";
 		html +=  "</table>";	
@@ -83,18 +102,18 @@
 		document.getElementById("modificaUser").innerHTML = html;
 
 	}//fin tablaEdita
-	
+	/**
 	function edita(datosMod){
 		//var urlParams = new URLSearchParams(window.location.search); 
 		//var id2 = urlParams.get('id');
 		
-		document.getElementById("idUser").value = datosMod.id.toString();
+		document.getElementById("idUser").value = datosMod.id;
 		document.getElementById("nombre").value = datosMod.nombreUser;
 		document.getElementById("email").value = datosMod.email;
 		document.getElementById("password").value = datosMod.passwordUser;
 		document.getElementById("imgUser").value = datosMod.imgUser;
 		document.getElementById("esAdmin").value = datosMod.esAdmin;
-		document.getElementById("descripcionPerfil").value = datosMod.descripcionPerfil;/**/
+		document.getElementById("descripcionPerfil").value = datosMod.descripcionPerfil;
 		console.log(datosMod.id);
 		console.log(datosMod.nombreUser);
 		
@@ -102,6 +121,29 @@
 		
 		//document.getElementById("editarTablaUsuario").innerHTML = html;
 	}
+	*/
+	
+	//EVENTOS
+	//devuelve una coleccion de elementos en este caso tipo button y que coja el primero que es i=0
+	//const btnAgregar = document.querySelector("btnAgregar");
+	
+	document.addEventListener('DOMContentLoaded', function(){
+		const btnAgregar = document.getElementsByTagName("button")[0];
+
+		//capturamos el evento de hacer click
+		btnAgregar.addEventListener('click', function(){
+			alert("patata");
+			
+			larala();
+	
+		});
+		
+	})//fin doc addEvent
+	
+	/**///fin evento boton
+	
+
+	
 	
 	
 	//Llamamos al servlet, cuando ya esste toda la pagina cargada hacemos una llamada con el fetch
