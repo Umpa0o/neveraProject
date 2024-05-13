@@ -130,18 +130,24 @@ header{
 /**input nombreProducto*/
 #nombreProducto{
     width: 240px;
-    height: 20px;
+    height: 30px;
 
+}
+
+.btnAgregaProductoCompra{
+    height: 30px;
+    display: inline;
 }
 
 #ulListaAgregado li {
+    display: block;
     list-style: none;
     border: 1px solid brown;
-    border-top: none;
+    border-top: none; 
 }
 
 #ulListaAgregado li a{
-    display: block;
+   
     text-decoration: none;
     color: blue;
     background-color: rgb(250, 246, 246);
@@ -150,5 +156,16 @@ header{
     padding: 5px 10px;
 }
 
+#btnHecho, #btnBorra{
+    display: float;
+    float: right;
+}
+
 
 /**/
+
+#contenLista{
+    border: 1px solid black;
+    width: 400px;
+    background-color: rgb(219, 233, 245);
+}

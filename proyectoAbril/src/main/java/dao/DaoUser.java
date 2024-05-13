@@ -50,7 +50,7 @@ public class DaoUser {
 				/**FUTURA IMPLEMENTACIÓN*/
 				//if
 				//si coincide el nombre, id o el email no se podrá dar de alta el usuario
-				
+				/** SELECT correo, nombre, id FROM usuario WHERE correo=? OR nombre=? OR id=?   **/
 				//else
 				//Precompilada sin id para insertar
 				/*String sql = "INSERT INTO usuario (nombreUsuario, emailUsuario, passwordUsuario, permiso) "
@@ -168,6 +168,8 @@ public class DaoUser {
 		}// fin listarUeJson()
 		
 		/** metodo actualizaUser devuelve un objeto tipo Usuario por la busqueda en sql de su id
+		 * 			este método se usa para obtener la información del usuario a actualizar y no la update en si
+		 * @param int id como parametro el id del usuario
 		 * */
 		public User actualizaUser(int id) throws SQLException {
 			String consulta = "SELECT * FROM usuario WHERE id_usuario=?";
@@ -184,13 +186,44 @@ public class DaoUser {
 					rs.getString(5), rs.getInt(6), rs.getString(7));
 			
 			System.out.println(us.toString());
+			System.out.println("obtenemos");
 			
 			return us;
-			
-	
-			
+					
 			
 		}// fin actualizaUser()
+		
+		/**MEtodo que actualiza el usuario con los datosd el form del front recibe un objeto deusuario
+		 * 
+		 * */
+		public void actualizador(User ue) {
+			String queryUpdate = "UPDATE usuario SET nombreUsuario=?, emailUsuario=?, imagenUsuario=?, permiso=?, descripcionUsuario=? WHERE id_usuario=?";
+			
+			PreparedStatement pre;
+			try {
+				pre = con.prepareStatement(queryUpdate);
+				System.out.println(queryUpdate);
+				
+				pre.setInt(1, ue.getId());
+				pre.setString(2, ue.getNombreUser());
+				pre.setString(3, ue.getEmail());
+				pre.setString(4, ue.getImgUser());	
+				pre.setInt(5, ue.getEsAdmin());
+				pre.setString(6, ue.getDescripcionPerfil());
+				System.out.println("actualizadooor");
+				System.out.println(queryUpdate);
+								
+				
+				int filas = pre.executeUpdate();	
+				pre.close();
+				
+			} catch (SQLException e) {
+
+				e.getMessage();
+				e.printStackTrace();
+			}
+			
+		}//fin actualizador
 		
 		
 		

@@ -194,6 +194,10 @@ public class User {
 		
 	}//fin actualizar()
 	
+	/**Metodo para devolver los datos al front/html/lado del cliente en formato json
+	 * 
+	 * */
+	
 	public String darJson() {
 		String json ="";
 		Gson gson = new Gson();
@@ -204,6 +208,19 @@ public class User {
 		
 		
 	}//findarJson()
+	
+	public void actualizador() {
+		try {
+			DaoUser dao = new DaoUser();
+			dao.actualizador(this);
+			
+		} catch (SQLException eh) {
+			
+			System.out.println("Error tryCatch actualizador");
+			eh.getMessage();
+		}
+		
+	}
 	
 	
 	/***************************************/

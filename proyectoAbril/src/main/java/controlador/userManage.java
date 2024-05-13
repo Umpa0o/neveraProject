@@ -50,7 +50,7 @@ public class userManage extends HttpServlet {
 			try {
 				us.actualizaUser(id);
 				System.out.println(us);
-				System.out.println("entra a actualizar");
+				System.out.println("entra a buscar para actualizar usrManage");
 				
 				//out.print("aqui"+us.darJson());
 				out.print(us.darJson());
@@ -136,33 +136,32 @@ public class userManage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	//	int id = Integer.parseInt(request.getParameter("id"));
-		try {
 			String nombreUser = request.getParameter("nameUser");
 			String emailUser =request.getParameter("mailUser");
 			String pswUser = request.getParameter("passUser");
+			String id = request.getParameter("id");
+		try {
 			
-			
-	
-			
+		
 			//User(String nombreUser, String email, String passwordUser) 
 			User ue = new User(nombreUser, emailUser, pswUser);
 			System.out.println(ue.toString());
-			
-			DaoUser dao;
-		
 			//ue.insertar();
-			dao = new DaoUser();
+			/**dao = new DaoUser();
 			dao.insertarUser(ue);
 			
-			System.out.println("Usuario insertado");
-			/**if(id== "") {
+			System.out.println("Usuario insertado");	*/
+			
+			if(id == "") {
 				ue.insertar();
 				System.out.println("Usuario insertado");
 			}else {
 				int idInt = Integer.parseInt(id);
 				ue.setId(idInt);
-			}
-			*/
+				ue.actualizador();
+				//response.sendRedirect("gestionAdmin.html");
+			}//fin ifelse
+		
 			
 			
 		} catch (SQLException e) {
@@ -170,12 +169,10 @@ public class userManage extends HttpServlet {
 			e.getMessage();
 		}
 		//mandamos a la página html de gestion administrador
-		response.sendRedirect("gestionAdmin.html");
-		
-		
-		
-		
+		//response.sendRedirect("gestionAdmin.html");
+	
 		
 	}//fin doPost
+	
 
 }//fin Servlet userManage

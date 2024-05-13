@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificando Usuario</title>
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
-    <script src="js/editUs.js"></script>
+    <!-- <script src="./js/editUs.js"></script> -->
 </head>
 <style>
     /*#editarTablaUsuario{
@@ -25,7 +25,7 @@
     }
     
     #editarUsuario td{
-    	display:block;
+    	/*display:block;*/
     	
     	height:30px;
    	}
@@ -48,13 +48,13 @@
 	//FUNCIONES
 	function peticion(id, op){
 		
-		fetch('userManage?id='+id+'&op='+op)	//promesa, damos xhecho qrecibimos los datos
+		fetch('userManage?id='+id+'&op=2')	//promesa, damos xhecho qrecibimos los datos
 		.then(response => response.json())		//que llegue un json 
 		//.then(data => pintarParaEditar(data))	//que hacer con los datos
 		.then(datos => {
 			console.log(datos);
-			tablaEdita(datos);
-			//edita(datos);
+			//tablaEdita(datos);
+			edita(datos);
 		} )
 		.catch(err => console.log(err))		//sacar xconsola los errores si los hiviera
 	}
@@ -74,40 +74,43 @@
 	
 	function tablaEdita(dat){
 		
-		let html = "<table id='editarUsuario'>";
-		html += "<h4>"+"Editar Usuario"+"</h4>";
+		let html = "<form method='post' action='userManage' name='formEditar'>";
+		html +="<table id='editarUsuario'>";
+		html += "<tr><th colspan='2'><h4>"+"Editar Usuario"+"</th></tr></h4>";
 		//html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
 		//"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
 		//<th>fechaNacimiento</th>
 		
-		html += "<tr>";
-			html += "<td><span>id</span> <input type='text' name='id' value='"+dat.id+"'></td>";
-			html += "<td><span>Nombre</span> <input type='text' name='nombreUser' value='"+dat.nombreUser+"'></td>";
-			html += "<td><span>Email</span> <input type='text' name='email' value='"+dat.email+"'></td>";
-			html += "<td><span>Contraseña</span> <input type='text' name='passwordUser' value='"+dat.passwordUser+"'></td>";
-			html += "<td><span>Imagen</span> <input type='text' name='imgUser' value='"+dat.imgUser+"'></td>";
-			html += "<td><span>Permiso</span> <input type='text' name='esAdmin' value='"+dat.esAdmin+"'></td>";
+		//html += "<tr>";
+			html += "<tr><td><input type='hidden' name='op' value='2'></td></tr>";
+			html += "<tr><td><span>id</span></td><td> <input type='text' name='id' value='"+dat.id+"'></td></tr>";
+			html += "<tr><td><span>Nombre</span> </td><td> <input type='text' name='nombreUser' value='"+dat.nombreUser+"'></td></tr>";
+			html += "<tr><td><span>Email</span> </td><td> <input type='text' name='email' value='"+dat.email+"'></td></tr>";
+			html += "<tr><td><span>Contraseña</span> </td><td> <input type='text' name='passwordUser' value='"+dat.passwordUser+"'></td></tr>";
+			html += "<tr><td><span>Imagen</span> </td><td> <input type='text' name='imgUser' value='"+dat.imgUser+"'></td></tr>";
+			html += "<tr><td><span>Permiso</span> </td><td> <input type='text' name='esAdmin' value='"+dat.esAdmin+"'></td></tr>";
 			
-			html += "<td><span>Descripción</span> <textarea rows='3' cols='40' name='descripcionPerfil' placeholder='"+dat.descripcionPerfil+"'></textarea></td>";
+			html += "<tr><td><span>Descripción</span></td><td> <textarea rows='3' cols='40' name='descripcionPerfil' placeholder='"+dat.descripcionPerfil+"'></textarea></td></tr>";
 			/**/
 			//html += "<td><a type='' href='modificarUsuario.html?id="+dat.id+"&op=2'>Editar</a>"+"</td>";
 			//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
 			html += "<td></td>";
-			html += "<td><button name='btnEditar' type='submit'>Guardar Cambios</button>  <button href='#' type=''>Cancelar</button></td>";
+			html += "<tr><td><button class='btnEditar' type='submit'>Guardar Cambios</button> </td><td> <button href='#' type=''>Cancelar</button></td></tr>";
 			html += "";
 		
-		html += "</tr>";
+		//html += "</tr>";
 		html +=  "</table>";	
+		html +=  "</form>";
 		
 		document.getElementById("modificaUser").innerHTML = html;
 
 	}//fin tablaEdita
-	/**
+	/***/
 	function edita(datosMod){
 		//var urlParams = new URLSearchParams(window.location.search); 
 		//var id2 = urlParams.get('id');
 		
-		document.getElementById("idUser").value = datosMod.id;
+		document.getElementById("id").value = datosMod.id;
 		document.getElementById("nombre").value = datosMod.nombreUser;
 		document.getElementById("email").value = datosMod.email;
 		document.getElementById("password").value = datosMod.passwordUser;
@@ -121,26 +124,19 @@
 		
 		//document.getElementById("editarTablaUsuario").innerHTML = html;
 	}
-	*/
+	
+	
+	
+	
+	/**/
 	
 	//EVENTOS
 	//devuelve una coleccion de elementos en este caso tipo button y que coja el primero que es i=0
-	//const btnAgregar = document.querySelector("btnAgregar");
 	
-	document.addEventListener('DOMContentLoaded', function(){
-		const btnAgregar = document.getElementsByTagName("button")[0];
-
 		//capturamos el evento de hacer click
-		btnAgregar.addEventListener('click', function(){
-			alert("patata");
-			
-			larala();
-	
-		});
 		
-	})//fin doc addEvent
 	
-	/**///fin evento boton
+	//fin evento boton
 	
 
 	
@@ -185,63 +181,36 @@
 <h4>editar usuario</h4>
 		<div id="modificaUser"></div>
 		
-        <form method="" action="useManage" name="editarTablaUsuario" >
-        		<label for="idUser">ID de usuario: *</label>
-                <input name="idUser" type="" >
+        <form method="post" action="userManage" name="editarTablaUsuario" >
+        		<label for="id">ID de usuario: *</label>
+                <input id="id" name="id" type="text" >
+                
+                <input id="op" name="op" type="hidden" value='2' >
                 
         		<label for="nombre">Nombre de usuario: *</label>
-                <input name="nombre" type="text" required>
+                <input id="nombre" name="nombre" type="text" required>
                 
                 <label for="email">Correo electrónico: *</label>
-                <input name="email" type="mail"  required>
+                <input id="email" name="email" type="mail"  required>
                 
                 <label for="password">Contraseña: *</label>
-                <input name="password" type="text"  required>
+                <input id="password" name="password" type="text"  >
                 
                 <label for="imgUser">Imagen de usuario: </label>
-                <input name="imgUser" type="text" >
+                <input id="imgUser" name="imgUser" type="text" >
                 
                 <label for="esAdmin">Permiso: *</label>
-                <input name="esAdmin" type="text"  required>
+                <input id="esAdmin"  name="esAdmin" type="text"  required>
                 
                 <label for="descripcionPerfil">descripcionPerfil: </label>
-                <input name="descripcionPerfil" type="text"  ><br>
+                <textarea id="descripcionPerfil"  name="descripcionPerfil" type="text" rows='4' cols='40' ></textarea><br>
                 
                 <span>[* Campo obligatorio]</span><br>
                 
                 <button type="submit">Enviar</button>
            
            <!-- 
-           !!!!!
-            <table id='editarUsuarios'>
-                
-                <tr><th>id</th>
-                    <th>nombreUser</th>
-                    <th>email</th>
-                    <th>passwordUser</th>
-                    <th>imgUser</th>
-                    <th>Permiso</th>
-                    <th>descripcionPerfil</th>
-                </tr>
-
-                <tr>          
-                    <td><input type='text' name='id' maxlength="4"> </td>
-                    <td><input type='text' name='nombre'> </td>
-                    <td><input type='text' name='email' > </td>
-                    <td><input type='text' name='password' > </td>
-                    <td><input type='text' name='imgUser' > </td>
-                    <td><input type='text' name='esAdmin' > </td>
-                    <td><input type='text' name='descripcionPerfil' > </td>
-                    
-                    <td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>ACTUALIZAR</a></td>
-        
-                    <td><a href='#' type=''>CANCELAR</a></td>
-                    
-                </tr>
-        
-                
-                </table>
-	 	!!!!!  -->
+             -->
 
         </form>
     
