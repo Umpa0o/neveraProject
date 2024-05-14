@@ -50,7 +50,7 @@ public class userManage extends HttpServlet {
 			try {
 				us.actualizaUser(id);
 				System.out.println(us);
-				System.out.println("entra a buscar para actualizar usrManage");
+				System.out.println("entra a buscar para actualizar usrManage(no actualiza solo recoge)");
 				
 				//out.print("aqui"+us.darJson());
 				out.print(us.darJson());
@@ -156,9 +156,9 @@ public class userManage extends HttpServlet {
 				ue.insertar();
 				System.out.println("Usuario insertado");
 			}else {
-				int idInt = Integer.parseInt(id);
-				ue.setId(idInt);
-				ue.actualizador();
+				//int idInt = Integer.parseInt(id);
+				//ue.setId(idInt);
+				//ue.actualizador();
 				//response.sendRedirect("gestionAdmin.html");
 			}//fin ifelse
 		

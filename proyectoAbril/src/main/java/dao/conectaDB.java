@@ -44,6 +44,7 @@ public class conectaDB {
 		} catch (SQLException e) {
 			System.out.println("Excepción: Error al conectarse a la DB nevera"+e.getMessage());
 			e.getMessage();
+
 		}
 	
 		//si la instancia no es null devuelve la instancia existente

@@ -34,13 +34,14 @@
 	   	font-weight:bolder;
 	   	margin-right: 10px;
    	}
+   	
+   	#passwordUser input:disabled{
+   		background-color:grey;
+   	}
    /*	#editarUsuario input{
 
    	}*/
-   	
-   	
-   	
-   	
+
    	
 </style>
 
@@ -83,14 +84,14 @@
 		
 		//html += "<tr>";
 			html += "<tr><td><input type='hidden' name='op' value='2'></td></tr>";
-			html += "<tr><td><span>id</span></td><td> <input type='text' name='id' value='"+dat.id+"'></td></tr>";
-			html += "<tr><td><span>Nombre</span> </td><td> <input type='text' name='nombreUser' value='"+dat.nombreUser+"'></td></tr>";
-			html += "<tr><td><span>Email</span> </td><td> <input type='text' name='email' value='"+dat.email+"'></td></tr>";
-			html += "<tr><td><span>Contraseña</span> </td><td> <input type='text' name='passwordUser' value='"+dat.passwordUser+"'></td></tr>";
-			html += "<tr><td><span>Imagen</span> </td><td> <input type='text' name='imgUser' value='"+dat.imgUser+"'></td></tr>";
-			html += "<tr><td><span>Permiso</span> </td><td> <input type='text' name='esAdmin' value='"+dat.esAdmin+"'></td></tr>";
+			html += "<tr><td><span>id</span></td><td> <input type='text' id='id' name='id' value='"+dat.id+"'></td></tr>";
+			html += "<tr><td><span>Nombre</span> </td><td> <input type='text' id='nombreUser' name='nombreUser' value='"+dat.nombreUser+"'></td></tr>";
+			html += "<tr><td><span>Email</span> </td><td> <input type='text' id='email' name='email' value='"+dat.email+"'></td></tr>";
+			html += "<tr><td><span>Contraseña</span> </td><td> <input type='password' id='passwordUser' name='passwordUser' value='"+dat.passwordUser+"'></td></tr>";
+			html += "<tr><td><span>Imagen</span> </td><td> <input type='text' id='imgUser' name='imgUser' value='"+dat.imgUser+"'></td></tr>";
+			html += "<tr><td><span>Permiso</span> </td><td> <input type='text' id='esAdmin' name='esAdmin' value='"+dat.esAdmin+"'></td></tr>";
 			
-			html += "<tr><td><span>Descripción</span></td><td> <textarea rows='3' cols='40' name='descripcionPerfil' placeholder='"+dat.descripcionPerfil+"'></textarea></td></tr>";
+			html += "<tr><td><span>Descripción</span></td><td> <textarea rows='3' cols='40' id='descripcionPerfil' name='descripcionPerfil' placeholder='"+dat.descripcionPerfil+"'></textarea></td></tr>";
 			/**/
 			//html += "<td><a type='' href='modificarUsuario.html?id="+dat.id+"&op=2'>Editar</a>"+"</td>";
 			//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
@@ -113,14 +114,12 @@
 		document.getElementById("id").value = datosMod.id;
 		document.getElementById("nombre").value = datosMod.nombreUser;
 		document.getElementById("email").value = datosMod.email;
-		document.getElementById("password").value = datosMod.passwordUser;
+		document.getElementById("passUser").value = datosMod.passwordUser;
 		document.getElementById("imgUser").value = datosMod.imgUser;
 		document.getElementById("esAdmin").value = datosMod.esAdmin;
 		document.getElementById("descripcionPerfil").value = datosMod.descripcionPerfil;
 		console.log(datosMod.id);
 		console.log(datosMod.nombreUser);
-		
-		
 		
 		//document.getElementById("editarTablaUsuario").innerHTML = html;
 	}
@@ -137,9 +136,7 @@
 		
 	
 	//fin evento boton
-	
 
-	
 	
 	
 	//Llamamos al servlet, cuando ya esste toda la pagina cargada hacemos una llamada con el fetch
@@ -181,7 +178,7 @@
 <h4>editar usuario</h4>
 		<div id="modificaUser"></div>
 		
-        <form method="post" action="userManage" name="editarTablaUsuario" >
+        <form method="post" action="modificaUser" name="editarTablaUsuario" >
         		<label for="id">ID de usuario: *</label>
                 <input id="id" name="id" type="text" >
                 
@@ -193,8 +190,8 @@
                 <label for="email">Correo electrónico: *</label>
                 <input id="email" name="email" type="mail"  required>
                 
-                <label for="password">Contraseña: *</label>
-                <input id="password" name="password" type="text"  >
+                <label for="passUser">Contraseña: *</label>
+                <input id="passUser" name="passUser" type="text"  >
                 
                 <label for="imgUser">Imagen de usuario: </label>
                 <input id="imgUser" name="imgUser" type="text" >

@@ -40,6 +40,18 @@ public class User {
 		//this.imgUser = imgUser;
 
 	}//fin contructor User para el Registro
+	
+	/**Contructos para administrados que modificaUsuarios, sin pisar la contraseña*/
+	public User(int id, String nombreUser, String email, String imgUser, int esAdmin, String descripcionPerfil) {
+		super();
+		this.id = id;
+		this.nombreUser = nombreUser;
+		this.email = email;
+		this.imgUser = imgUser;
+		this.esAdmin = esAdmin;
+		this.descripcionPerfil = descripcionPerfil;
+	}
+
 
 
 	/**Constructor User con todos los atributos de la clase User*/
@@ -57,6 +69,7 @@ public class User {
 		this.descripcionPerfil = descripcionPerfil;
 		
 	}//fin constructor User completo
+	
 	
 	/***************************************/
 

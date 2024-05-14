@@ -29,4 +29,14 @@
     <servlet-name>contactoControlador</servlet-name>
     <url-pattern>/contactoControlador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>modificaUser</display-name>
+    <servlet-name>modificaUser</servlet-name>
+    <servlet-class>controlador.modificaUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modificaUser</servlet-name>
+    <url-pattern>/modificaUser</url-pattern>
+  </servlet-mapping>
 </web-app>
