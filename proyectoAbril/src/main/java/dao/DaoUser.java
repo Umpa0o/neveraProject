@@ -202,16 +202,17 @@ public class DaoUser {
 			PreparedStatement pre;
 			try {
 				pre = con.prepareStatement(queryUpdate);
-				System.out.println(queryUpdate);
+				//System.out.println(queryUpdate);
 				
-				pre.setInt(1, ue.getId());
-				pre.setString(2, ue.getNombreUser());
-				pre.setString(3, ue.getEmail());
-				pre.setString(4, ue.getImgUser());	
-				pre.setInt(5, ue.getEsAdmin());
-				pre.setString(6, ue.getDescripcionPerfil());
+				
+				pre.setString(1, ue.getNombreUser());
+				pre.setString(2, ue.getEmail());
+				pre.setString(3, ue.getImgUser());	
+				pre.setInt(4, ue.getEsAdmin());
+				pre.setString(5, ue.getDescripcionPerfil());
+				pre.setInt(6, ue.getId());
 				System.out.println("actualizadooor");
-				System.out.println(queryUpdate);
+				System.out.println(pre);
 								
 				
 				int filas = pre.executeUpdate();	
@@ -224,6 +225,8 @@ public class DaoUser {
 			}
 			
 		}//fin actualizador
+		
+		
 		
 		
 		

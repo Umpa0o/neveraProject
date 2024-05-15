@@ -66,7 +66,7 @@ public class modificaUser extends HttpServlet {
 		pw.print("imprimimos en html lo que queremos enviar a la db pero sale mal \n");
 		pw.print(ue);
 		
-		//response.sendRedirect("gestionAdmin.html");
+		response.sendRedirect("gestionAdmin.html");
 		
 		
 		
