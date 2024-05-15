@@ -226,6 +226,33 @@ public class DaoUser {
 			
 		}//fin actualizador
 		
+		/**metodo para borrar usuario de la database a traves de seleccionar el id en el panel de administrador
+		 * 	! 
+		 * ?	y desde perfil usuario?!
+	 * 			
+		 * @param int id
+		 * 
+		 * */
+		public void borrar(int id) {
+			String delsql = "DELETE FROM usuario WHERE id_usuario=?";
+			
+			try {
+				PreparedStatement ps = con.prepareStatement(delsql);
+				ps.setInt(1, id );
+				
+				int filas = ps.executeUpdate();	
+				ps.close();
+				System.out.println("Usuario borrado");
+				
+				
+			} catch (SQLException he) {
+				
+				System.out.println("Error tryCatch borrar usuario");
+				he.getMessage();
+			}
+			
+		}//fin borrar usuario
+		
 		
 		
 		

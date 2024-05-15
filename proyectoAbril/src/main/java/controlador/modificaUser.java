@@ -68,12 +68,8 @@ public class modificaUser extends HttpServlet {
 		
 		response.sendRedirect("gestionAdmin.html");
 		
-		
-		
-		
-		
-		
-		
-	}
 
-}
+		
+	}//fin doPost
+
+}//fin modificaUser servlet

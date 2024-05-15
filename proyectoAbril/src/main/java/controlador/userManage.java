@@ -77,6 +77,22 @@ public class userManage extends HttpServlet {
 				e.getMessage();
 			}//fin try/catch
 			
+		}else if(opcion == 3){
+			int id = Integer.parseInt(request.getParameter("id")) ;
+			try {
+				DaoUser daoUsuario;
+				daoUsuario = new DaoUser();
+				daoUsuario.borrar(id);
+				
+				//esto no esta funcionando
+				¿?¿?¿?response.sendRedirect("modificarUsuario.html");
+				
+			}catch(SQLException ex) {
+				System.out.println("error borrar userManage");
+				ex.getMessage();
+			}
+			
+			
 		}//fin ifelse
 		
 		//switch para el panelAdministrador para borrar y editar users

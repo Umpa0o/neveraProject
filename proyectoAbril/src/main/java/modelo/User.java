@@ -222,6 +222,7 @@ public class User {
 		
 	}//findarJson()
 	
+	//actualizador User
 	public void actualizador() {
 		try {
 			DaoUser dao = new DaoUser();
@@ -233,7 +234,22 @@ public class User {
 			eh.getMessage();
 		}
 		
-	}
+	}//fin actualizador
+	
+	//borrarUSer
+	public void borrar(int id) {
+		
+		try {
+			DaoUser dao;
+			dao = new DaoUser();
+			dao.borrar(id);
+			
+		} catch (SQLException e) {
+			System.out.println("Error borrar modelo User.java");
+			e.getMessage();
+		}
+		
+	}//fin borrar User
 	
 	
 	/***************************************/
