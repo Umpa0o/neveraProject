@@ -31,16 +31,24 @@
     		.then(response => response.json())
     		//los datos que recibimos(data) llame a una función pintarTablaUsuarios
     		.then(data => pintarTablaUsuarios(data))
+    		
     	}//fin llamada()
     	
-    	//función para botón de borrar usuario que llama al servlet
-    	//esto no se debe hacer asi, ya que hay otra maneras más efevctivas, eto es ahora para salir del paso
+    	/** función borrar(id) para botón de borrar usuario que llama al servlet
+    	    esto no se debe hacer asi, ya que hay otra maneras más efevctivas q con funcion jS al btn, esto es ahora para salir del paso
+    		@see  https://developer.mozilla.org/es/docs/Web/API/Location/reload
+    	*/
+    	
     	function borrar(id){
 			if(confirm("¿Estás segur@ de querer borrar?")){
 				fetch('userManage?id='+id+'&op=3')
 	    		.then(response => response.json())
 	    		//va a pintar otra vez la tabla pero nueva
 	    		.then(datin => pintarTablaUsuarios(datin))
+	    		
+	    		//funcion javaScript que carga de nuevo la misma url gestionAdmin
+	    		location.reload()
+	    		
 			}//fin if 
 
     	}//fin borrar()

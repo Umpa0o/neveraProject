@@ -72,6 +72,7 @@ public class userManage extends HttpServlet {
 				out.print(daoUs.listarUeJson());
 				System.out.println("Estamos en la opcion 1");
 				
+				
 			} catch (SQLException e) {
 
 				e.getMessage();
@@ -83,9 +84,7 @@ public class userManage extends HttpServlet {
 				DaoUser daoUsuario;
 				daoUsuario = new DaoUser();
 				daoUsuario.borrar(id);
-				
-				//esto no esta funcionando
-				¿?¿?¿?response.sendRedirect("modificarUsuario.html");
+								
 				
 			}catch(SQLException ex) {
 				System.out.println("error borrar userManage");
@@ -162,21 +161,23 @@ public class userManage extends HttpServlet {
 			//User(String nombreUser, String email, String passwordUser) 
 			User ue = new User(nombreUser, emailUser, pswUser);
 			System.out.println(ue.toString());
-			//ue.insertar();
-			/**dao = new DaoUser();
+			ue.insertar();
+			System.out.println("Usuario insertado");
+				
+		/**dao = new DaoUser();
 			dao.insertarUser(ue);
 			
-			System.out.println("Usuario insertado");	*/
-			
+				
 			if(id == "") {
 				ue.insertar();
 				System.out.println("Usuario insertado");
 			}else {
+				System.out.println("peta aqui");*/
 				//int idInt = Integer.parseInt(id);
 				//ue.setId(idInt);
 				//ue.actualizador();
 				//response.sendRedirect("gestionAdmin.html");
-			}//fin ifelse
+			//}//fin ifelse
 		
 			
 			
@@ -185,7 +186,7 @@ public class userManage extends HttpServlet {
 			e.getMessage();
 		}
 		//mandamos a la página html de gestion administrador
-		//response.sendRedirect("gestionAdmin.html");
+		response.sendRedirect("gestionAdmin.html");
 	
 		
 	}//fin doPost
