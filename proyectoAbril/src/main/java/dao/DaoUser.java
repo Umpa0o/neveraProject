@@ -142,6 +142,41 @@ public class DaoUser {
 			
 		}// fin listarUsuarios()
 		
+		/**metodo listarTipo() Crea una coleccion de datos tipo User seleccionando por tipo segun buscador Admin
+		 * @param int tipo es el numero de permiso del usuario para el buscador/filtro del admin 
+		 * 
+		 * */
+		
+		public ArrayList<User> listarTipo(int tipo) throws SQLException {
+			//Iniciamos la coleccióna  null
+			ArrayList<User> listaUa=null;
+			ResultSet rs;
+			
+				String filtra = "SELECT * FROM usuario WHERE permiso=?";
+				PreparedStatement pr =con.prepareStatement(filtra);
+				pr.setInt(1, tipo);
+				rs = pr.executeQuery();	
+				System.out.println(filtra);
+
+				while(rs.next()) {
+					//si es null lo creamos y si no le añadimos información para no tener que resetearlo
+					if(listaUa == null) {
+						listaUa = new ArrayList<User>();
+		
+					}//fin if
+					
+					listaUa.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+							rs.getString(5), rs.getInt(6), rs.getString(7)));
+					
+					
+				}//fin while
+				System.out.println("ArrayList: "+listaUa);
+			
+			return listaUa;
+			
+			
+		}// fin listarTipo()
+		
 		
 		/**Método listarUeJson() nos comunicaremos con el cliente con json, diferenciando el front del back
 		 * 	hacemos que ntro servlet cree un JSON para devolverle al cliente.
@@ -161,6 +196,26 @@ public class DaoUser {
 			json = gson.toJson(this.listarUsuarios());
 			System.out.println("por json");
 			//System.out.println(json);
+			
+			return json;
+			
+					
+		}// fin listarUeJson()
+		
+		/**Método listarTipoJson() listar por tipo sjon
+		 * 
+		 * @build gson.google
+		 * 
+		 * **/
+		public String listarTipoJson(int tipo) throws SQLException {
+
+			String json ="";
+
+			Gson gson = new Gson();
+			
+			
+			json = gson.toJson(this.listarTipo(tipo));
+			
 			
 			return json;
 			

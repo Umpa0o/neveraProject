@@ -64,7 +64,7 @@ public class userManage extends HttpServlet {
 			}//fin try/catch
 			
 		}else if(opcion == 1){
-			//listar
+			//Opcion 1: listar
 			DaoUser daoUs;
 			try {
 				
@@ -79,6 +79,7 @@ public class userManage extends HttpServlet {
 			}//fin try/catch
 			
 		}else if(opcion == 3){
+			//Opcion 3: borrar
 			int id = Integer.parseInt(request.getParameter("id")) ;
 			try {
 				DaoUser daoUsuario;
@@ -90,6 +91,24 @@ public class userManage extends HttpServlet {
 				System.out.println("error borrar userManage");
 				ex.getMessage();
 			}
+			
+			
+		}else if(opcion == 4){
+			//Opcion 4: buscar
+			int tipo = Integer.parseInt(request.getParameter("tipoUsuario"));
+			System.out.println("aqui=");
+			
+			try {
+				DaoUser die = new DaoUser();
+				out.print(die.listarTipoJson(tipo));
+			} catch (SQLException e) {
+				
+				e.getMessage();
+			}
+			//como hablamos con una coleccion de objetos Usuario, genermaos metodo dentro del dao, con el out devolvemos el json con un metodo
+			//out.print();
+			
+			
 			
 			
 		}//fin ifelse

@@ -45,7 +45,7 @@
     		console.log(datosUsuarios);
     		
     		let html = "<table id='tablaUsuarios'>";
-    		html += "<h4>"+"CABECERA TABLA"+"</h4>";
+    		html += "<h4>"+""+"</h4>";
     		html += "<tr><th>id</th><th>Nombre</th><th>Email</th><th>Password</th>"+
     		"<th>imgUser</th><th>Permiso</th><th>Descripcion Perfil</th><th colspan='2'>Acciones</th></tr>";
     		//<th>fechaNacimiento</th>
@@ -125,10 +125,10 @@
     
 		 //función para buscar por tipo de permiso de usuario
 		 function busquedaPorTipo(tipo){
-    		fetch('userManage?op=4')
+    		fetch('userManage?op=4&tipoUsuario='+tipo)
     		.then(response => response.json())
     		.then(data => pintarTablaUsuarios(data))
-		 }
+		 }//fin busquedaTipo
 
 		 
 
@@ -175,7 +175,7 @@
 		<div id="buscadorUsuario">
 			<button class="btnOkulta" id="btnOcultarBuscador" onclick="javascript:ocultarBuscador()">Ocultar buscador  &nbsp; <img id="imgOculto" alt="visibleBuscar" src="./img/icon/ojoNo16.png"></button>
 			<form name="formBusca" method="get" action="userManage?op=4">
-				<label for="">Buscar usuario por permiso:</label>
+				<label for="tipoUsuario">Buscar usuario por permiso:</label>
 				<select name="tipoUsuario" id="tipoUsuario" onchange="busquedaPorTipo(this.value)">
 					<option value="selecciona"> Selecciona un tipo</option>
 					<option value="0">0 -   Deshabilitado		</option>
@@ -184,14 +184,16 @@
 					<option value="7">7 - 	Puede compartir		</option>
 					<option value="9">9 - 	Administrador		</option>
 
-				</select>
-				<button id="enviarBusqueda">Buscar  &nbsp; <img alt="buscar" src="./img/icon/lupa16.png"></button>
-			</form>
 
+				</select>
+				<!-- <button id="enviarBusqueda">Buscar  &nbsp; <img alt="buscar" src="./img/icon/lupa16.png"></button>  -->
+			</form>
+			<hr><hr>
 			<hr>
 		</div>
 
-        <div id="usuarioAeditar"></div>
+        <div id="usuarioAeditar">
+        patatas rellenas dffdhdfhfdd</div>
 
         <div id="listado_usuarios">
 			
@@ -207,6 +209,7 @@
 		document.getElementById("buscadorUsuario").style.display='block';
 		//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojoNo16.png")
 		document.getElementById("btnMostrarBuscador").style.display='none';
+		document.getElementById("listado_usuarios").style.cssText='margin-top:60px 0px; background-color: green;';
 	}
 	
 	//función para ocultar el buscador en el panel del admin

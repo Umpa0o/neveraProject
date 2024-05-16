@@ -2,11 +2,12 @@
     background-color: rgb(236, 135, 135);
     border: 1px solid black;
     height:200px;
-    /*width: auto;*/
-    margin-top:30px;
+    /*width: auto;
+    margin-top:60px;*/
     margin-left:-140px;
     border-collapse: collapse; 
-    width: 50% 
+    width: 50% ;
+
 }
 #tablaUsuarios td, th{
     border-bottom: 1px solid black;
@@ -28,10 +29,17 @@
 }
 
 #buscadorUsuario{
-    /*background-color: bisque;*/
-    height: 20px;
+    /**/background-color: bisque;
+    height: 80px;
     display: none;
+    padding:20px 40px;
 
+}
+
+#usuarioAeditar{
+	display:block;
+	height: 20px;
+	width:140px;
 }
 
 #tipoUsuario{
