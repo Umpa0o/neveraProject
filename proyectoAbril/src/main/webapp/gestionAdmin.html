@@ -5,21 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Administrador</title>
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
+	<link rel="stylesheet" type="text/css" href="css/gestion.css">
     
-    <style>
-    	#tablaUsuarios{
-    		background-color: red;
-    		border: 1px solid black;
-    		height:200px;
-    		width: auto;
-    		margin-left:-140px;
-    	}
-    	#tablaUsuarios td{
-    		border: 1px solid black;
-    		padding: 2px;
-    	}
-    </style>
-
    <!--<script src="jS/jsGestionAdmin.js"></script> --> 
 	<script type="text/javascript">
 		//Funciones
@@ -59,8 +46,8 @@
     		
     		let html = "<table id='tablaUsuarios'>";
     		html += "<h4>"+"CABECERA TABLA"+"</h4>";
-    		html += "<tr><th>id</th><th>nombreUser</th><th>email</th><th>passwordUser</th>"+
-    		"<th>imgUser</th><th>Permiso</th><th>descripcionPerfil</th></tr>";
+    		html += "<tr><th>id</th><th>Nombre</th><th>Email</th><th>Password</th>"+
+    		"<th>imgUser</th><th>Permiso</th><th>Descripcion Perfil</th><th colspan='2'>Acciones</th></tr>";
     		//<th>fechaNacimiento</th>
     		
     		for(let i=0; i<datosUsuarios.length; i++){
@@ -74,9 +61,9 @@
     			html += "<td>"+datosUsuarios[i].esAdmin+"</td>"; 			
     			html += "<td>"+datosUsuarios[i].descripcionPerfil+"</td>";
    				/**/
-   				html += "<td><a href='modificarUsuario.html?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
+   				html += "<td><a class='btnGestion' href='modificarUsuario.html?id="+datosUsuarios[i].id+"&op=2'><img src='img/icon/borrar16.png'>Editar</a>"+"</td>";
    				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
-   				html += "<td><a href='javascript:borrar("+datosUsuarios[i].id+")' >Borrar</a></td>";
+   				html += "<td><a class='btnGestion'  href='javascript:borrar("+datosUsuarios[i].id+")' ><img src=''>Borrar</a></td>";
     			
     			html += "</tr>";
     			
@@ -135,7 +122,32 @@
     	}
     	
     	 enlace Editar pasar a boton con evento para pintar el div superior a la tabla para modificar usuario en la misma gestionAdmin.html y poder actualizar desde ahi**/
-    	
+    
+		 //función para buscar por tipo de permiso de usuario
+		 function busquedaPorTipo(tipo){
+    		fetch('userManage?op=4')
+    		.then(response => response.json())
+    		.then(data => pintarTablaUsuarios(data))
+		 }
+
+		 //función para mostrar el buscador en el panel del admin
+		 function mostrarBuscador(){
+			document.getElementById("buscadorUsuario").style.display='block';
+			//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojoNo16.png")
+			document.getElementById("btnMostrarBuscador").style.display='none';
+		 }
+
+		 //función para ocultar el buscador en el panel del admin
+		 function ocultarBuscador(){
+			document.getElementById("buscadorUsuario").style.display='none';
+			document.getElementById("btnMostrarBuscador").style.display='block';
+			//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojo16.png")
+		 }
+
+		 //let btn_Mostrar = document.getElementById("btnMostrarBuscador");
+		// btn_Mostrar.addEventListener("click", mostrarBuscador());
+
+
 
     window.onload = function (){
 		llamada();
@@ -170,10 +182,33 @@
 
         </header>
         <h1>Panel Administrador</h1>
+		<div id="divBtnMostrarBuscador">
+			<button class="btnBuska" id="btnMostrarBuscador" onclick="javascript:mostrarBuscador()">Mostrar buscador  &nbsp; <img id="imgVisible" alt="visibleBuscar" src="./img/icon/ojo16.png"></button>
+			
+		</div>
+		<div id="buscadorUsuario">
+			<button class="btnBuska" id="btnOcultarBuscador" onclick="javascript:ocultarBuscador()">Ocultar buscador  &nbsp; <img id="imgOculto" alt="visibleBuscar" src="./img/icon/ojoNo16.png"></button>
+			<form name="formBusca" method="get" action="userManage?op=4">
+				<label for="">Buscar usuario por permiso:</label>
+				<select name="tipoUsuario" id="tipoUsuario" onchange="busquedaPorTipo(this.value)">
+					<option value="selecciona"> Selecciona un tipo</option>
+					<option value="0">0 -   Deshabilitado		</option>
+					<option value="1">1 - 	Usuario por defecto </option>
+					<option value="3">3 -   No puede compartir  </option>
+					<option value="7">7 - 	Puede compartir		</option>
+					<option value="9">9 - 	Administrador		</option>
+
+				</select>
+				<button id="enviarBusqueda">Buscar  &nbsp; <img alt="buscar" src="./img/icon/lupa16.png"></button>
+			</form>
+
+			<hr>
+		</div>
+
         <div id="usuarioAeditar"></div>
 
         <div id="listado_usuarios">
-			en este div pintaremos cosas
+			
             
         </div>
 
