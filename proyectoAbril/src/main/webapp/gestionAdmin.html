@@ -130,27 +130,13 @@
     		.then(data => pintarTablaUsuarios(data))
 		 }
 
-		 //función para mostrar el buscador en el panel del admin
-		 function mostrarBuscador(){
-			document.getElementById("buscadorUsuario").style.display='block';
-			//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojoNo16.png")
-			document.getElementById("btnMostrarBuscador").style.display='none';
-		 }
-
-		 //función para ocultar el buscador en el panel del admin
-		 function ocultarBuscador(){
-			document.getElementById("buscadorUsuario").style.display='none';
-			document.getElementById("btnMostrarBuscador").style.display='block';
-			//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojo16.png")
-		 }
-
-		 //let btn_Mostrar = document.getElementById("btnMostrarBuscador");
-		// btn_Mostrar.addEventListener("click", mostrarBuscador());
+		 
 
 
 
     window.onload = function (){
 		llamada();
+		ocultarBuscador();
 
 
 		//llamada(id, op);
@@ -215,6 +201,25 @@
     </div><!--fin div container-->
     
 </body>
+<script>
+	//función para mostrar el buscador en el panel del admin
+	function mostrarBuscador(){
+		document.getElementById("buscadorUsuario").style.display='block';
+		//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojoNo16.png")
+		document.getElementById("btnMostrarBuscador").style.display='none';
+	}
+	
+	//función para ocultar el buscador en el panel del admin
+	function ocultarBuscador(){
+		document.getElementById("buscadorUsuario").style.display='none';
+		document.getElementById("btnMostrarBuscador").style.display='block';
+		//document.getElementById("imgVisible").setAttribute("src", "./img/icon/ojo16.png")
+	}
+	
+	//let btn_Mostrar = document.getElementById("btnMostrarBuscador");
+	// btn_Mostrar.addEventListener("click", mostrarBuscador());
+
+</script>
 </html>
 
 <!--
