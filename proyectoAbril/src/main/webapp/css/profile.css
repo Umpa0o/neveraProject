@@ -1,0 +1,187 @@
+*{
+    margin:0% auto;
+    padding: 0%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container{
+    background-color: aquamarine;
+    width: 80%;
+    min-width: 450px;
+    max-width: 1250px;
+    height: 800px;
+    
+}
+/*++++  MENÚ  ++++*/
+header{
+    height: 60px;
+    min-height: 70px;
+    background-color: beige;
+}
+
+.titleLogo{
+        color: #000;
+        
+}
+
+.menuContacto a{
+    text-decoration: none;
+    padding: 0 10px;
+    color: #fff;
+}
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+    background-color: rgb(176, 14, 176);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.menuContacto ul{
+    display: flex;
+    list-style-type: none;
+    
+}
+.menuContacto a:hover{
+    background-color: blueviolet;
+    padding: 6px 10px;
+    border-radius: 15px;
+    line-height: 2;
+    text-decoration: underline;
+    cursor: grabbing;
+}
+
+
+
+/*cuerpo perfil*/
+.espacioPerfil{
+    display: flex;
+
+    /*width: 20%;height: 100%;*/
+    background-color: blanchedalmond;
+
+}
+
+.contenedorIzq{
+    width: 20%;
+    border: 1px solid black;
+}
+
+label{display: block;}
+
+.titlePerfil{
+    display: block;
+    /*width: 40%;*/
+    background-color: blue;
+}
+
+.fotoUser{
+    background-color: red;
+    padding: 5px 2px;
+    /*border: 1px solid black;*/
+}
+
+.imgUsuario{
+    /* ESTO SE VA A CAMBIAR CON LAS COOKIES */
+    border-radius: 20px;
+}
+
+.espacioCalendario{
+    
+
+    background-color: #fff;
+    width: 90%;
+}
+
+.espacioContactos{
+    
+    height: 150px;
+    background-color: orange;
+    width: 90%;
+
+}
+
+.calendarioUser img{
+    width: 200px;
+}
+
+.btnCal {
+    display: inline-block;
+    width: 210px;
+    height: 50px;
+    font-size: 20px;
+    padding: 5px 12px ;
+    margin: 5px 5px;
+    text-align: center;
+}
+
+
+
+
+
+/**/
+.contenedorDcho{
+   /* height: 100%;*/
+    width: 80%;
+    flex-direction: row;
+
+    background-color: #fff;
+    border: 1px solid black;
+
+}
+.espacioEspacios{
+    float: left;
+    width: 40%;
+   /* height: 200px;*/
+    background-color: aqua;
+    border: 1px solid black;
+
+}
+
+.espacioEspacios a{
+    text-decoration: none;
+}
+.espacioEspacios ul li{
+    display: block;
+    list-style-type: none;
+    border: 1px solid #fff;
+    padding: 40px 0;
+
+}
+
+/**/
+.espacioListas{
+    float: flex;
+    /*border: 1px solid black;*/
+
+
+}
+
+.tablaProductos table{
+    width: 100%;
+       
+
+}
+.tablaProductos th, td{
+    padding: 2px 4px;
+    border: 1px solid;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/***********TABLA PROVISIONAL ELEGIR ALERGIAS/AVISOS ALERGENOS DB productos************/
+#tablaAlergias{
+    width: 400px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+#tablaAlergias img{
+    margin-left: 25px;
+}
+
+
+
+/**************************/

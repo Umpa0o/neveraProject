@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,8 +23,8 @@ import dao.conectaDB;
  */
 public class userManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	//public static Connection con = null;//borrar con la continuacion
+	//Instanciamos la sessión para poder trabajar con ella
+	HttpSession sesion;
 
     public userManage() {
         super();
@@ -34,9 +34,20 @@ public class userManage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//iniciamos la sesion pidiendosela al navegadorWebs
+		//XX sesion = request.getSession();
+		
+		//variable que recoge el valor del campo id que agregamos comoa tributo ala sesion
+		//XX int idSesion = Integer.parseInt((String)sesion.getAttribute("id"));
+		//que es lo mismo que la función siguiente:
+		//int idSesion3 = (int) sesion.getAttribute("id");
+		
+		/**si el id es diferente a cero sq es usuario registrado*/
+		
 		
 		PrintWriter out = response.getWriter();
 		
+		//Procesos de edición, insertado, borrado y buscar
 		int opcion = Integer.parseInt(request.getParameter("op")) ;
 		System.out.println("estamos en la opcion  "+opcion);
 		

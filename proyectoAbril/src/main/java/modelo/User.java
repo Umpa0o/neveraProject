@@ -251,6 +251,46 @@ public class User {
 		
 	}//fin borrar User
 	
+	/**	metodo logear() devuelve un booleano
+	 * 
+	 * @param	String password recibe un parámetro de cadena de texto con la contraseña del usuario
+	 * 			<ul>Devuelve:
+	 * 				<li><strong>true: </strong>  </li>
+	 * 				<li><strong>false: </strong>  </li>
+	 * 		
+	 * 			</ul>
+	 * */
+	public boolean logear(String password) {
+		
+		boolean comprueba = false;
+		
+		try {
+			DaoUser dao = new DaoUser();
+			//comprueba la base de datos y si devuelve un objeto aux con sus datos, es decir, no es nulo pasa al if
+			User aux = dao.logeando(this, password);
+			
+			if(aux != null) {
+				//al contener datos ponemos booleano a true
+				comprueba = true;
+				//si no es null contiene datos, asi que los sacamos
+				this.setId(aux.getId());
+				this.setNombreUser(aux.getNombreUser());
+				this.setEmail(aux.getEmail());
+				this.setEsAdmin(aux.getEsAdmin());
+				System.out.println(aux.toString());
+				
+				
+			}//fin if
+					
+			
+		} catch (SQLException e) {
+			System.out.println("Error tryCatch User.logear(pass)");
+			e.getMessage();
+		}//fin try/catch
+			System.out.println(comprueba);
+		return comprueba;
+	}// fin logear()
+	
 	
 	/***************************************/
 	

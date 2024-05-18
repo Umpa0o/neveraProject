@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta de Usuario</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
 
     <style>
@@ -16,9 +16,7 @@
     </style>
     
     <script>
-	  /*  function sacarLista(){
-	    	document.getElementById("formAltaUser").submit();
-	    }*/
+
     	
     
     </script>
@@ -49,11 +47,9 @@
                 <p>contenido</p>
             </aside>
             <!-- Formulario de Registro -->
-            <form name="formAltaUser" method="post" action="userManage">
-                <label for="nameUser">Nombre de usuario: *</label>
-                <input name="nameUser" type="text" required>
-                <label for="mailUser">Correo electrónico: *</label>
-                <input name="mailUser" type="mail"  required>
+            <form name="formLogin" method="post" action="Login">
+                <label for="mailUser">Email usuario: *</label>
+                <input name="mailUser" type="mail" required>
                 <label for="passUser">Contraseña: *</label>
                 <input name="passUser" type="password"  required>
  
@@ -65,10 +61,8 @@
 				<!-- Botones Formulario -->
                 <div class="btnFormulario">
                     <button class="" type="reset" title="Borrar contenido del Formulario y empezar de cero">Vaciar Formulario</button>
-                    <button class="" type="submit" title="Enviar el formulario y darse de alta">Registrarse</button>
+                    <button class="" type="submit" title="Enviar el formulario y darse de alta">Iniciar Sesión</button>
                 </div>
-                
-                <a href="login.html" title="Inicio de sesión">Iniciar Sesión</a>
                 
 
             </form>

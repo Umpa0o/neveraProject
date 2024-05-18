@@ -308,8 +308,37 @@ public class DaoUser {
 			
 		}//fin borrar usuario
 		
+		/** metodo logeando()
+		 * @param 	User u
+		 * @param 	String password
+		 * @throws SQLException 
+		 * 
+		 * */
 		
+		public User logeando(User u, String password) throws SQLException {
+			String query = "SELECT * FROM usuario WHERE emailUsuario = ? AND passwordUsuario = ?";
+			User aux =  null;
+
+			PreparedStatement ps = con.prepareStatement(query);
+			//queremos que como primer interrogante coja el email
+			ps.setString(1, u.getEmail());
+			//como segundo la contraseña del usuario
+			ps.setString(2, password);
+			
+			ResultSet res = ps.executeQuery();
+			
+			if(res.next()) {
+				aux = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), 
+					res.getString(5), res.getInt(6), res.getString(7));
+					System.out.println(aux.toString());
+			}
+			//devuelve al usuario
+			
+
+			return aux;	
+			
+		}//fin logeando()
 		
-		
+	
 		
 }//fin clase DaoUser
