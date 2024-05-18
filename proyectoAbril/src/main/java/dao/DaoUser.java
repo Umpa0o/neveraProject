@@ -1,5 +1,8 @@
 package dao;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,7 +64,8 @@ public class DaoUser {
 				pst= con.prepareStatement(sql);
 				pst.setString(1, ue.getNombreUser());
 				pst.setString(2, ue.getEmail());
-				pst.setString(3, ue.getPasswordUser());
+				//pasamos la contraseña a MD5
+				pst.setString(3, miMD5(ue.getPasswordUser()));
 				
 				
 				pst.setInt(4, ue.getEsAdmin());
@@ -89,7 +93,7 @@ public class DaoUser {
 				
 				while(rsLis.next()) {
 					System.out.println(rsLis.getString(1)+"\t" +rsLis.getString(2)+"\t" +rsLis.getString(3)+"\t" +
-				rsLis.getString(4)+"\t" +rsLis.getString(5)+"\t" +rsLis.getString(6)+"\t" +rsLis.getString(7)+"\t" 
+					miMD5(rsLis.getString(4))+"\t" +rsLis.getString(5)+"\t" +rsLis.getString(6)+"\t" +rsLis.getString(7)+"\t" 
 				+rsLis.getString(8)+"\t" +rsLis.getString(9));
 				}
 				
@@ -126,7 +130,8 @@ public class DaoUser {
 						
 					}//fin if
 					
-					listaUe.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+					//protegemos las contraseñas que no se crearon cifradas al listarUsuarios
+					listaUe.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), miMD5(rs.getString(4)), 
 							rs.getString(5), rs.getInt(6), rs.getString(7)));
 					
 					//System.out.println("IMprime addd"+listaUe);
@@ -165,7 +170,7 @@ public class DaoUser {
 		
 					}//fin if
 					
-					listaUa.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+					listaUa.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), miMD5(rs.getString(4)), 
 							rs.getString(5), rs.getInt(6), rs.getString(7)));
 					
 					
@@ -323,22 +328,40 @@ public class DaoUser {
 			//queremos que como primer interrogante coja el email
 			ps.setString(1, u.getEmail());
 			//como segundo la contraseña del usuario
-			ps.setString(2, password);
+			ps.setString(2, (password));
 			
 			ResultSet res = ps.executeQuery();
 			
 			if(res.next()) {
-				aux = new User(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), 
+				aux = new User(res.getInt(1), res.getString(2), res.getString(3), (res.getString(4)), 
 					res.getString(5), res.getInt(6), res.getString(7));
 					System.out.println(aux.toString());
 			}
 			//devuelve al usuario
 			
-
 			return aux;	
 			
 		}//fin logeando()
 		
-	
+		
+		
+		private static String miMD5(String inputPassword) {
+	        try {
+	            MessageDigest md = MessageDigest.getInstance("MD5");
+	            byte[] messageDigest = md.digest(inputPassword.getBytes());
+	            BigInteger number = new BigInteger(1, messageDigest);
+	            String hashtext = number.toString(16);
+
+	            while (hashtext.length() < 32) {
+	                hashtext = "0" + hashtext;
+	            }
+	            return hashtext;
+	            
+	        } catch (NoSuchAlgorithmException e) {
+	            throw new RuntimeException(e);
+	        }
+	    }//fin miMD5
+		
+	/*****/
 		
 }//fin clase DaoUser

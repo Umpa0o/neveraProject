@@ -1,5 +1,8 @@
 package modelo;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import com.google.gson.Gson;
@@ -267,7 +270,7 @@ public class User {
 		try {
 			DaoUser dao = new DaoUser();
 			//comprueba la base de datos y si devuelve un objeto aux con sus datos, es decir, no es nulo pasa al if
-			User aux = dao.logeando(this, password);
+			User aux = dao.logeando(this, (password));
 			
 			if(aux != null) {
 				//al contener datos ponemos booleano a true
@@ -290,6 +293,8 @@ public class User {
 			System.out.println(comprueba);
 		return comprueba;
 	}// fin logear()
+	
+
 	
 	
 	/***************************************/

@@ -36,7 +36,10 @@ public class Login extends HttpServlet {
 		
 	}//fin doGet
 
-
+	/** metodo doPost que controla el proceso del login y la salida al cliente de este proceso.
+	 * 		usamos un metodo miMD5 para cifrar la contraseña del usuario
+	 * 
+	 * **/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Variables que recogen los datos introducidos en el formulario LOGIN.HTML
 		String mail = request.getParameter("mailUser");
@@ -44,11 +47,11 @@ public class Login extends HttpServlet {
 		
 		//pasamos el metodo para cifrar la contraseña en MD5 
 		/****
-		 * String password = miMD5(request.getParameter("passUser")) ;
 		 * 
+		 * String password = (request.getParameter("passUser")) ;
 		 * **/
+		String password = miMD5(request.getParameter("passUser")) ;
 		
-		String password = (request.getParameter("passUser")) ;
 		
 		User u = new User();
 		u.setEmail(mail);
