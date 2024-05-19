@@ -75,12 +75,12 @@ label{display: block;}
     background-color: blue;
 }
 
-.fotoUser{
-    background-color: red;
+/*.fotoUser{
+     background-color: red;
     padding: 5px 2px;
-    /*border: 1px solid black;*/
+   border: 1px solid black;
 }
-
+*/
 .imgUsuario{
     /* ESTO SE VA A CAMBIAR CON LAS COOKIES */
     border-radius: 20px;

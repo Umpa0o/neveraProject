@@ -1,0 +1,22 @@
+.espacioListas, .alergias{
+    display: none;
+}
+
+.contenedorIzq{
+    width: 20%;
+    border: 1px solid black;
+}
+
+
+#fotoUser{
+    padding: 20px 30px;
+}
+
+.imgUsuario img{
+    display: flex;
+   
+}
+
+#formProfile label{
+    font-size: 12px;
+}

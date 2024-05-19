@@ -64,11 +64,11 @@ public class DaoUser {
 				pst= con.prepareStatement(sql);
 				pst.setString(1, ue.getNombreUser());
 				pst.setString(2, ue.getEmail());
-				//pasamos la contraseña a MD5
+				/*//pasamos la contraseña a MD5
 				String hasPass =(miMD5(ue.getPasswordUser()));
-				pst.setString(3, (hasPass));
+				pst.setString(3, (hasPass));*/
 				
-				/*pst.setString(3,ue.getPasswordUser());*/
+				pst.setString(3,ue.getPasswordUser());
 				pst.setInt(4, ue.getEsAdmin());
 				System.out.println(pst.toString());
 

@@ -47,16 +47,16 @@ public class Login extends HttpServlet {
 		
 		//pasamos el metodo para cifrar la contraseña en MD5 
 		/****
+		 * String password = miMD5(request.getParameter("passUser")) ;
 		 * 
-		 * String password = (request.getParameter("passUser")) ;
 		 * **/
-		String password = miMD5(request.getParameter("passUser")) ;
+		String password = (request.getParameter("passUser")) ;
 		
 		
 		User u = new User();
 		u.setEmail(mail);
 		System.out.println(u.toString());
-		System.out.println("contraseña cifrada check: "+password);
+		//System.out.println("contraseña cifrada check: "+password);
 		
 		//protección: si el u esta logeao o no?
 		//true-> guardar id y permiso de ese usuario
