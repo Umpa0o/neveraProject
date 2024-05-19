@@ -65,10 +65,12 @@ public class DaoUser {
 				pst.setString(1, ue.getNombreUser());
 				pst.setString(2, ue.getEmail());
 				//pasamos la contraseña a MD5
-				pst.setString(3, miMD5(ue.getPasswordUser()));
+				String hasPass =(miMD5(ue.getPasswordUser()));
+				pst.setString(3, (hasPass));
 				
-				
+				/*pst.setString(3,ue.getPasswordUser());*/
 				pst.setInt(4, ue.getEsAdmin());
+				System.out.println(pst.toString());
 
 
 				System.out.println("Usuario insertado correctamente");
@@ -150,6 +152,8 @@ public class DaoUser {
 		/**metodo listarTipo() Crea una coleccion de datos tipo User seleccionando por tipo segun buscador Admin
 		 * @param int tipo es el numero de permiso del usuario para el buscador/filtro del admin 
 		 * 
+		 * lleva el metodo miMD5
+		 * 
 		 * */
 		
 		public ArrayList<User> listarTipo(int tipo) throws SQLException {
@@ -169,7 +173,7 @@ public class DaoUser {
 						listaUa = new ArrayList<User>();
 		
 					}//fin if
-					
+					/** miMD5 en listar usuarios para proteger ontraseñas antiguas*/
 					listaUa.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), miMD5(rs.getString(4)), 
 							rs.getString(5), rs.getInt(6), rs.getString(7)));
 					
