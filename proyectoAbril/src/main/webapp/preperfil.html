@@ -28,15 +28,22 @@
         </header>
         <h1 class="titlePerfil">Perfil de Usuario <a href="#scriptpara cambiar fondo de pantalla"><img title="Cambiar Fondo de Pantalla del Perfil" src="img/galeri32.png"></a></h1>
         
+<!-- form action="multipart/form-data": espacio/ conjunto de espacio fisico y librerias
+		que el server necesita para gestionar buffer y envio de datos
+		desde el cliente hasta el servidor
+		
+		#   action="multipart/form-data"
+
+ -->
 
         <div class="espacioPerfil">
             <div class="contenedorIzq">
-                <form id="formProfile" name="formProfile" method="" action="">
+                <form id="formProfile" name="formProfile" method="post" action="#">
                     <div id="fotoUser">
                         <img class="imgUsuario" alt="Selecciona tu foto de Perfil" src="img/team/team3.png"><br>
                         
                         <label for="subirImg" >Elige tu imagen de Perfil:</label>
-                        <input name="subirImg" type="file" value="Foto de Perfil">
+                        <input name="fotoUsuario" type="file" >
 
                         <label for="imgMarco">Selecciona un Marco de Perfil:</label>
                         <select>
@@ -47,6 +54,8 @@
                             <option name="CuadradoRedondeado" value="squareCircle">Cuadrado Redondeado</option>
                             <option name="Estrella" value="stars">Estrella</option>
                         </select>
+                        
+                        <input type="submit" value="Enviar">
     
                     <!--   <label for="tipoPerfil">Tipo de Perfil: </label>
                     <select>
@@ -57,11 +66,8 @@
                     -->
     
                     </div>
-    
-                    
-                    
-    
-                </form>
+   
+                </form><!-- FIN FORMmodificar imagen -->
     
              <!--     <div class="espacioCalendario">
                     <h4>Calendario</h4>
