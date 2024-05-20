@@ -20,3 +20,8 @@
 #formProfile label{
     font-size: 12px;
 }
+
+#descripcionPerfil{
+    /*resize none para no poder modificar el área del textarea y desconfigurar la página*/
+    resize: none;
+}

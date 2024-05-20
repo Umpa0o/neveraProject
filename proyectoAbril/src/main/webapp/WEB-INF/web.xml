@@ -59,4 +59,14 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>svUserProfile</display-name>
+    <servlet-name>svUserProfile</servlet-name>
+    <servlet-class>controlador.svUserProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>svUserProfile</servlet-name>
+    <url-pattern>/svUserProfile</url-pattern>
+  </servlet-mapping>
 </web-app>

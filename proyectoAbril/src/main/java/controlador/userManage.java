@@ -27,7 +27,7 @@ import dao.conectaDB;
 
 /**anotación-> @nombre  pueden llevar atributos, en este caso avisamos de que usaremos multipart
 	Si no lo ponemos, no reconocerá ninguna funcion correspondiente al envio de archivos*/
-//@MultipartConfig
+@MultipartConfig
 
 /**También vamos a etiquetar el nombre del server por defecto, aunque no siempre haga falta según servidor
  buscará el nombre del servlet mediante anotación, indicamos que está en la raíz 
@@ -236,7 +236,7 @@ public class userManage extends HttpServlet {
 			e.getMessage();
 		}
 		//mandamos a la página html de gestion administrador
-		response.sendRedirect("gestionAdmin.html");
+		response.sendRedirect("preperfil.html");
 		
 		/**SUBIR IMÁGENES:
 		 *  recibimos el nombre del campo del formulario para subir la img fotoUsuario

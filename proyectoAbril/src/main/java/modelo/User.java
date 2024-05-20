@@ -21,7 +21,9 @@ public class User {
 	private String nombreUser;
 	private String email;
 	private String passwordUser;
-	private String imgUser;
+	//private String imgUser;
+	private String imgUser = "img_default.png";		//Por defecto, idem imagen de usuario
+	//private int esAdmin;
 	private int esAdmin = 1;		//Por defecto el usuario es 1 usuario normal
 	
 	//private String fechaNacimiento;
@@ -54,6 +56,17 @@ public class User {
 		this.esAdmin = esAdmin;
 		this.descripcionPerfil = descripcionPerfil;
 	}
+	
+	
+	/**  Constructor para usuario que pueda actualizarse asi  mismo su nombre de usuario, la img y la descripción***/
+	
+	public User(String nombreUser, String imgUser, String email, String descripcionPerfil) {
+		super();
+		this.nombreUser = nombreUser;
+		this.email = email;
+		this.imgUser = imgUser;
+		this.descripcionPerfil = descripcionPerfil;
+	}
 
 
 
@@ -74,6 +87,8 @@ public class User {
 	}//fin constructor User completo
 	
 	
+	
+
 	/***************************************/
 
 	/**GETTERS & SETTERS*/
@@ -233,11 +248,28 @@ public class User {
 			
 		} catch (SQLException eh) {
 			
-			System.out.println("Error tryCatch actualizador");
+			System.out.println("Error tryCatch actualizador modeloo User");
 			eh.getMessage();
 		}
 		
 	}//fin actualizador
+	
+	//actualizar perfilUser.html
+	public void updatePerfil() {
+		DaoUser dau;
+		try {
+			dau = new DaoUser();
+			dau.updatePerfil(this);
+			
+		} catch (SQLException j) {
+			System.out.println("Error tryCatch updatePerfil modelo User");
+			j.getMessage();
+			j.printStackTrace();
+			
+		} 
+		
+	}//fin updatePerfil()
+	
 	
 	//borrarUSer
 	public void borrar(int id) {

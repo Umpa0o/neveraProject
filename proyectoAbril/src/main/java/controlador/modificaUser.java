@@ -40,6 +40,7 @@ public class modificaUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// doGet(request, response);TODO Auto-generated method stub
+		
 		//Variables, recogen datos del formulario
 		String id_usuario = request.getParameter("id");
 		String nombreUsuario = request.getParameter("nombre");

@@ -7,6 +7,21 @@
     <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/preperfil.css">
 </head>
+
+<script>
+    function actualizaDatos(datos){
+        // cambiar source que es img leches 
+        document.getElementById("imgPerfil");
+        document.getElementById("nombreUsuario");
+        document.getElementById("descripcionPerfil");
+
+
+        
+    }
+
+</script>
+
+
 <body>
     <div class="container">
         <header>
@@ -32,30 +47,40 @@
 		que el server necesita para gestionar buffer y envio de datos
 		desde el cliente hasta el servidor
 		
-		#   action="multipart/form-data"
+		#   enctype="multipart/form-data"
+
+        action="svUserProfile"
 
  -->
 
         <div class="espacioPerfil">
             <div class="contenedorIzq">
-                <form id="formProfile" name="formProfile" method="post" action="#">
+                <form id="formProfile" name="formProfile" method="post" action="#" enctype="multipart/form-data">
                     <div id="fotoUser">
-                        <img class="imgUsuario" alt="Selecciona tu foto de Perfil" src="img/team/team3.png"><br>
+                        <img id="imgPerfil" name="imgPerfil" class="imgUsuario" alt="Selecciona tu foto de Perfil" src="img/team/team3.png"><br>
+                        
+                        <label for="nombreUsuario" >Nombre:</label>
+                        <input name="nombreUsuario" type="text" >
                         
                         <label for="subirImg" >Elige tu imagen de Perfil:</label>
                         <input name="fotoUsuario" type="file" >
 
-                        <label for="imgMarco">Selecciona un Marco de Perfil:</label>
+
+                        <label for="imgMarco">Selecciona un Marco:</label>
                         <select>
                             <span src-only>cookies</span>
-                            <option name="" value="default"></option>
+                            <option name="Selecciona" value="selecciona">Marco para foto perfil:</option>
                             <option name="Redondo" value="default">Redondo</option>
                             <option name="Cuadrado" value="square">Cuadrado</option>                        
                             <option name="CuadradoRedondeado" value="squareCircle">Cuadrado Redondeado</option>
                             <option name="Estrella" value="stars">Estrella</option>
                         </select>
+
+                        <label for="descripcionPerfil">Descripción de Perfil: </label>
+                        <textarea id="descripcionPerfil"  name="descripcionPerfil" type="text" rows='4' cols='20' ></textarea><br>
                         
-                        <input type="submit" value="Enviar">
+                        <button name="enviarPerfilActualizado" type="submit" title="Actualizar Perfil de Usuario">Actualizar Perfil <img src="img/icon/recargar16.png" alt="Actualizar Perfil"></button>
+                        
     
                     <!--   <label for="tipoPerfil">Tipo de Perfil: </label>
                     <select>
@@ -106,7 +131,7 @@
                     <li><a href=""><img class="icnEspacio" src="img/icon/fridge32.png"> Nevera</a></li>
                     <li><a href=""><img class="icnEspacio" src="img/icon/congelador32.png"> Congelador</a></li>
                     <li><a href=""><img class="icnEspacio" src="img/icon/cestaVerdura.png"> Ambiente</a></li>
-                    <li><a href=""><img class="icnEspacio" src="img/icon/pezConge32.png"> Arcón</a></li>
+                    <li><a href=""><img class="icnEspacio" src="img/icon/pezConge32.png"> Arcón del Pueblo</a></li>
                    </ul>
                    <button type="button" title="Guarde sus Espacios de almacenamiento para poder importarlos más tarde">Guardar Espacios <img src="img/icon/disco-flexible.png"></button>
 

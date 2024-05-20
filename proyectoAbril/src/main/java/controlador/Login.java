@@ -45,6 +45,9 @@ public class Login extends HttpServlet {
 		String mail = request.getParameter("mailUser");
 		System.out.println("do post login");
 		
+		//contandor intentos contraseña
+		int contador=0;
+		
 		//pasamos el metodo para cifrar la contraseña en MD5 
 		/****
 		 * String password = miMD5(request.getParameter("passUser")) ;
@@ -76,18 +79,25 @@ public class Login extends HttpServlet {
 				response.sendRedirect("gestionAdmin.html");
 				System.out.println("Administrador logeado: "+ mail);
 			}else {
-				response.sendRedirect("profile.html");
+				response.sendRedirect("preperfil.html");
 				System.out.println("Usuario logeado: "+ mail);
 			}
 			
 		
 			System.out.println(u.toString());
-			System.out.println(sison);
+			//System.out.println(sison.toString());
 		}else {
 			response.sendRedirect("login.html");
 			System.out.println("Usuario NO logeado: "+ mail);
 			System.out.println("puede que no sea correcto");
+			contador ++;
+			System.out.println("llevas intentandolo "+contador+" veces, cuidado");
 		}
+		/*
+		if(contador == 3) {
+			System.out.println("Usuario bloqueado, contacta con un administrador");
+			u.setEsAdmin(0);
+		}*/
 		
 		
 		

@@ -22,7 +22,7 @@ import modelo.User;
 
 
 public class DaoUser {
-	//Patron Singelton
+	//Patron Singelton¿?
 		//atributo estatico tipo connection
 		public static Connection con = null;
 		
@@ -73,10 +73,11 @@ public class DaoUser {
 				System.out.println(pst.toString());
 
 
-				System.out.println("Usuario insertado correctamente");
+				
 				
 				int filas = pst.executeUpdate();
 				
+				System.out.println("Usuario insertado correctamente");
 				//Cerramos el PreparedStatement
 				pst.close();
 				
@@ -347,8 +348,38 @@ public class DaoUser {
 			
 		}//fin logeando()
 		
+		/**metodo para que el usuario actualice su perfil**/
+		public void updatePerfil(User ue) {
+			String queryPerfil = "UPDATE usuario SET nombreUsuario=?, imagenUsuario=?, descripcionUsuario=? WHERE emailUsuario=?";
+			
+			PreparedStatement pre;
+			try {
+				pre = con.prepareStatement(queryPerfil);
+				//System.out.println(queryPerfil);
+				
+				
+				pre.setString(1, ue.getNombreUser());	
+				pre.setString(2, ue.getImgUser());	
+				pre.setString(3, ue.getDescripcionPerfil());
+				pre.setString(4, ue.getEmail());
+				
+				System.out.println("perfil user DAOuser:¿? actualiza");
+				System.out.println(pre);
+								
+				
+				int filas = pre.executeUpdate();	
+				pre.close();
+				
+			} catch (SQLException e) {
+
+				e.getMessage();
+				e.printStackTrace();
+			}
+			
+		}//fin updatePerfil
 		
 		
+		/**modificar string password a MD5*/
 		private static String miMD5(String inputPassword) {
 	        try {
 	            MessageDigest md = MessageDigest.getInstance("MD5");
