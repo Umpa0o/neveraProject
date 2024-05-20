@@ -23,7 +23,17 @@ public class Space {
 	public Space() {
 		super();
 	}
+	
+	//consuctror sin id para insertar espacio
+	public Space(String nombreEspacio, String regimenTemperatura, String icono, int id_usuario) {
+		super();
+		this.nombreEspacio = nombreEspacio;
+		this.regimenTemperatura = regimenTemperatura;
+		this.icono = icono;
+		this.id_usuario = id_usuario;
+	}
 
+	//constructor completo
 	public Space(int id_espacio, String nombreEspacio, String regimenTemperatura, String icono, int id_usuario) {
 		super();
 		this.id_espacio = id_espacio;
@@ -32,7 +42,8 @@ public class Space {
 		this.icono = icono;
 		this.id_usuario = id_usuario;
 	}
-	
+
+
 	//GETTER && SETTERS
 
 	public int getId_espacio() {
@@ -86,7 +97,7 @@ public class Space {
 		
 		// !* 
 		
-	}//fin insertar()
+	}//fin insertarEspacio()
 	
 	
 	

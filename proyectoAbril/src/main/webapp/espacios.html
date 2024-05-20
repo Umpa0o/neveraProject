@@ -29,7 +29,7 @@
         <h1 class="titleAbout">Gestionar Espacios </h1>
         <div id="creadorEspacio">
             <button>Añadir espacio</button>
-            <form method="" action="" name="formCrearEspacio">
+            <form method="post" action="svSpaceManage" name="formCrearEspacio">
                 <label for="nombreEspacio">Nombre</label>
                 <input type="text" name="nombreEspacio">
 
@@ -41,13 +41,15 @@
                     <option value="congelado">Congelado</option>
                 </select>
          
-                <label for="nombreEspacio">IconoEspacio</label>
-                <input type="text" name="nombreEspacio">
+                <!-- <label for="iconoEspacio">IconoEspacio</label> -->
+                <img src="img/icon/copodenieve16.png" alt="icono espacio" name="iconoEspacio">
 
-                <button>Guardar Espacio</button>
+                <input value="Guardar Espacio" type="submit">
             </form>
         </div>
         <BR></BR>
+        <BR>
+        <BR>
 <HR></HR>
         <div class="vistasEspacios">
             Ver espacio: <select name="" id="">

@@ -69,4 +69,14 @@
     <servlet-name>svUserProfile</servlet-name>
     <url-pattern>/svUserProfile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>svSpaceManage</display-name>
+    <servlet-name>svSpaceManage</servlet-name>
+    <servlet-class>controlador.svSpaceManage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>svSpaceManage</servlet-name>
+    <url-pattern>/svSpaceManage</url-pattern>
+  </servlet-mapping>
 </web-app>
