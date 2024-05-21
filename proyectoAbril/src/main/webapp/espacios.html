@@ -7,6 +7,33 @@
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
     <link rel="stylesheet" type="text/css" href="css/espacios.css">
 </head>
+<script>
+ 
+    function estadoIcono(){
+        var imgIcono = document.getElementById("icnEspacio");
+
+        var temperatura = document.getElementById("temperaturaEspacio").value;
+
+        console.log(temperatura);
+
+        if (temperatura ==("ambiente")){
+            imgIcono.setAttribute("src", "img/icon/cestaVerdura.png");
+       
+        } else if(temperatura ==("frio")){
+            imgIcono.setAttribute("src", "img/icon/fridge32.png");
+
+        }else if(temperatura ==("congelado")){
+            imgIcono.setAttribute("src", "img/icon/pezConge32.png");
+
+        }
+
+    }
+    
+
+
+</script>
+
+
 <body>
     <div class="container">
         <header>
@@ -28,13 +55,13 @@
         </header>
         <h1 class="titleAbout">Gestionar Espacios </h1>
         <div id="creadorEspacio">
-            <button>Añadir espacio</button>
+            <h4>Añadir nuevo espacio</h4>
             <form method="post" action="svSpaceManage" name="formCrearEspacio">
                 <label for="nombreEspacio">Nombre</label>
                 <input type="text" name="nombreEspacio">
 
                 <label for="temperaturaEspacio">Temperatura</label>
-                <select name="temperaturaEspacio">
+                <select id="temperaturaEspacio" name="temperaturaEspacio" onchange="javascript:estadoIcono()">
                     <option value="selecciona">Selecciona</option>
                     <option value="ambiente">Ambiente</option>
                     <option value="frio">Frio</option>
@@ -42,7 +69,7 @@
                 </select>
          
                 <!-- <label for="iconoEspacio">IconoEspacio</label> -->
-                <img src="img/icon/copodenieve16.png" alt="icono espacio" name="iconoEspacio">
+                <img src="img/icon/cestaPan.png" alt="icono espacio" id="icnEspacio" name="iconoEspacio">
 
                 <input value="Guardar Espacio" type="submit">
             </form>

@@ -21,18 +21,37 @@ public class DaoSpace {
 	
 	//MÉTODOS CRUD
 	
-	//insertarEspacio en DB
+	/***insertarEspacio en DB*/
 	public void insertarEspacio(Space sp) {
-		PreparedStatement pst;
+		PreparedStatement pr;
 		ResultSet rs=null;
 		
 		String query = "INSERT INTO espacio(nombreEspacio, regimenTemperatura, icono, id_usuario) VALUES (?,?,?,?) ";
 		try {
-			pst= con.prepareStatement(query);
-			pst.setString(1, sp.getNombreEspacio());
-			pst.setString(2, sp.getRegimenTemperatura());
-			pst.setString(3, sp.getIcono());
-			pst.setInt(4, sp.getId_usuario());	
+			pr= con.prepareStatement(query);
+			pr.setString(1, sp.getNombreEspacio());
+			pr.setString(2, sp.getRegimenTemperatura());
+			
+			/*	//que cambie el icono x defecto segun regimen tde temperatura del espacio
+			if(sp.getRegimenTemperatura().equalsIgnoreCase("ambiente")) {
+				pr.setString(3, ("/img/icon/cestaVerdura.png"));
+			}else if(sp.getRegimenTemperatura().equalsIgnoreCase("frio")) {
+				pr.setString(3, ("/img/icon/fridge32.png"));
+			}else if(sp.getRegimenTemperatura().equalsIgnoreCase("congelado")) {
+				pr.setString(3, ("/img/icon/congelador32.png"));
+			}
+			*/
+			pr.setString(3, sp.getIcono());
+			pr.setInt(4, sp.getId_usuario());	
+			
+			
+			System.out.println(pr.toString());
+			
+			int filas = pr.executeUpdate();
+			
+			pr.close();
+			
+			System.out.println("Espacio insertado");
 			
 		} catch (SQLException e) {
 			System.out.println("Error tryCatch: error al insertar espacio");
@@ -40,7 +59,8 @@ public class DaoSpace {
 			e.printStackTrace();
 		}//fin try/catch
 		
-		//listar espacios para comprobar insercionxconsola
+		
+		/**listar espacios para comprobar insercionxconsola***/
 		
 		try {
 			Statement st = con.createStatement();

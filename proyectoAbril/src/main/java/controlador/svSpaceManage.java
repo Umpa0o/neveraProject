@@ -5,16 +5,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.SQLException;
+
 import modelo.Space;
 
-import java.io.IOException;
+
 
 /**
  * Servlet implementation class svSpaceManage
  */
 public class svSpaceManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	HttpSession miSesion;
+    
     //Constructor
     public svSpaceManage() {
         super();
@@ -36,13 +41,27 @@ public class svSpaceManage extends HttpServlet {
 		String icono = request.getParameter("iconoEspacio");
 		/**no es get parameter es get source para la imagen????
 		 * 
+		 * src = /img/icon/
+		 * 
 		 * ***/
-		int id_usuario= Integer.parseInt(request.getParameter("id_usuario"));
+		miSesion = request.getSession(true);
+		//miSesion.getAttribute("id");
+		//hacemos un Casting de la sesion a tipo entero int
+		int id_usuario=(Integer)miSesion.getAttribute("id");
+		
 		
 		Space space = new Space(nombreEspacio, regimenTemperatura, icono, id_usuario);
 		
+		try {
+			space.insertarEspacio();
+			System.out.println("Espacio insertado correctamente");
+		} catch (SQLException e) {
+			System.out.println("Error tryCatch insertar Espacio servlet");
+			e.getMessage();
+		}
 		
 		System.out.println("datos para insertar Espacio");
+		System.out.println(id_usuario);
 		
 		
 		//response.sendRedirect("espacios.html");

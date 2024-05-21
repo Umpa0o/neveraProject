@@ -71,9 +71,7 @@ public class DaoUser {
 				pst.setString(3,ue.getPasswordUser());
 				pst.setInt(4, ue.getEsAdmin());
 				System.out.println(pst.toString());
-
-
-				
+	
 				
 				int filas = pst.executeUpdate();
 				

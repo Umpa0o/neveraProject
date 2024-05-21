@@ -86,7 +86,9 @@ public class Space {
 		this.id_usuario = id_usuario;
 	}
 	
-	//métodos del objeto Space
+	//MÉTODOS del objeto Space
+	
+	/**Insertar Espacio*/
 	public void insertarEspacio() throws SQLException {
 		//Esta sección va por patrón !*
 		/**Redundancia: como norma en POO cada objeto debe ser dueño de sus acciones, aunque sea redundante
@@ -95,8 +97,7 @@ public class Space {
 		DaoSpace das = new DaoSpace(); 
 		das.insertarEspacio(this);
 		
-		// !* 
-		
+
 	}//fin insertarEspacio()
 	
 	
