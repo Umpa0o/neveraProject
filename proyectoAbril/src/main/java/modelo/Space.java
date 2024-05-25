@@ -100,6 +100,13 @@ public class Space {
 
 	}//fin insertarEspacio()
 	
+	/**Listar Espacios de un usuario
+	public void listarEspacios(int id_usuario) {
+		DaoSpace das = new DaoSpace();
+		Space spa = das.listarEspacios(id_usuario); //ayy que es un arrayyy
+		
+	}//fin listarEspacios()
+	*/
 	
 	
 	

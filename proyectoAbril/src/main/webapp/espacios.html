@@ -8,7 +8,37 @@
     <link rel="stylesheet" type="text/css" href="css/espacios.css">
 </head>
 <script>
- 
+ 	//FUNCIONES
+ 	//funcion para pintar la info del servlet
+ 	if(window.sessionStorage){
+ 		var id = sessionStorage.getItem("id_usuario");
+ 	}
+ 	
+ 	function llamada(id){
+ 		//por defecto 1 que rellena listaod espacios
+ 		fetch('svSpaceManage?id_usuario='+id+'&opSpace=1')
+ 		.then(response => response.json())
+ 		.then (data => pintarEspacios(data))
+ 	}// fin llamada()
+ 	
+ 	
+ 	//funcion pintarEspacios()
+ 	function pintarEspacios(datos){
+ 		let html = "<h4>Listado de Espacios de: userxx</h4>";
+ 		html += "<table id='verListaTablas'>";
+ 		html += "<tr><th> icono </th><th> Nombre Espacio </th><th> Acciones </th></tr>";
+ 		html += "<tr>";
+ 		html += "<td> <img alt='iconoEspacio' src='"+datos.getIcono+"'> </td>";
+ 		html += "<td>"+datos.getNombreEspacio+"</td>";
+ 		html += "<td></td>";
+ 		html += "<td><a href=#>Ver espacio</a></td>";
+ 		html += "</tr>";
+ 		
+ 	}// fin pintarEspacios()
+ 	
+ 	
+ 	
+ 	//EVENTO SELECT TEMPERATURA
     function estadoIcono(){
         var imgIcono = document.getElementById("icnEspacio");
 
@@ -25,9 +55,10 @@
         }else if(temperatura ==("congelado")){
             imgIcono.setAttribute("src", "img/icon/pezConge32.png");
 
-        }
-
-    }
+        }//fin if/else
+    }// fin estadoIcono()
+    
+    
     
 
 

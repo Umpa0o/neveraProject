@@ -9,15 +9,30 @@
 </head>
 
 <script>
+    
+    
+    if (window.sessionStorage) {
+		var id_usuario = sessionStorage.getItem("id_usuario");
+
+		console.log("El id recogido es"+id_usuario);
+
+	}
+    
     function actualizaDatos(datos){
         // cambiar source que es img leches 
         document.getElementById("imgPerfil");
         document.getElementById("nombreUsuario");
         document.getElementById("descripcionPerfil");
-
-
         
-    }
+    }// fin actualizaDatos
+    
+    //evento boton
+    function irAEspacios(){
+    	location.href="espacios.html?id_usuario="+id_usuario+"&opSpace=1";
+    }//irAEspacios()
+    
+    
+	
 
 </script>
 
@@ -128,8 +143,10 @@
                    <h4>Espacios</h4>
                    <!--<span src-only>Aqui van los espacios del usuario desde la DB</span>
                         iconoEspacio, nombreEspacio, temperaturaEspacio DB, botones renombrar, modificar o eliminar
+                        
+                        <a class="btnPerfil" type="button" href="espacios.html">Gestionar Espacios</a>
                     -->
-                    <a class="btnPerfil" type="button" href="espacios.html">Gestionar Espacios</a>
+                    <input type="button" id="btnEspacios" name="btnEspacios" onclick="javascript:irAEspacios();" value="Gestionar Espacios"></>
                    <ul>
                     <li><a href=""><img class="icnEspacio" src="img/icon/fridge32.png"> Nevera</a></li>
                     <li><a href=""><img class="icnEspacio" src="img/icon/congelador32.png"> Congelador</a></li>

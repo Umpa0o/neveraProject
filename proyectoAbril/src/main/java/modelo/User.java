@@ -205,7 +205,7 @@ public class User {
 			
 		}//fin insertar()
 	
-	/**Metodo para actualizar los datos de USuarios en la database, creando instancia de la clase DAOUser
+	/**Metodo para recoger los datos de USuario a actualizar en la database, creando instancia de la clase DAOUser
 	 * 
 	 * */
 	
@@ -223,7 +223,7 @@ public class User {
 		System.out.println(aux.toString());
 
 		
-	}//fin actualizar()
+	}//fin actualizaUser()
 	
 	/**Metodo para devolver los datos al front/html/lado del cliente en formato json
 	 * 

@@ -66,13 +66,19 @@ public class Login extends HttpServlet {
 		//false-> mandar a pagina de registro/inicio
 		if(u.logear(password)) {
 			//Iniciamos la sesión
-			sison =  request.getSession();
+			sison =  request.getSession(true);
 			
 			//añadimos a la sesión campo id y permiso
-			sison.setAttribute("id", u.getId());
-			//sison.setAttribute("nombre", u.getNombreUser());
+			sison.setAttribute("id_usuario", u.getId());
+			sison.setAttribute("nombre", u.getNombreUser());
 			//sison.setAttribute("email", u.getEmail());
 			sison.setAttribute("permiso", u.getEsAdmin());
+			
+			System.out.println(sison.getAttribute("id_usuario"));
+			System.out.println(sison.getAttribute("nombre"));
+			System.out.println(sison.getAttribute("permiso"));
+			
+			
 			
 			
 			if(u.getEsAdmin() == 9) {

@@ -116,32 +116,32 @@ public class DaoUser {
 			ArrayList<User> listaUe=null;
 			ResultSet rs;
 			
-				String consulta = "SELECT * FROM usuario";
-				PreparedStatement sta =con.prepareStatement(consulta);
-				rs = sta.executeQuery();	
-				System.out.println(consulta);
+			String consulta = "SELECT * FROM usuario";
+			PreparedStatement sta =con.prepareStatement(consulta);
+			rs = sta.executeQuery();	
+			System.out.println(consulta);
 
-				while(rs.next()) {
-					//si es null lo creamos y si no le añadimos información para no tener que resetearlo
-					if(listaUe == null) {
-						listaUe = new ArrayList<User>();
-						//System.out.println("pasa por if");
-						//System.out.println("Imprime array craeadovacio"+listaUe);
-						
-						
-					}//fin if
+			while(rs.next()) {
+				//si es null lo creamos y si no le añadimos información para no tener que resetearlo
+				if(listaUe == null) {
+					listaUe = new ArrayList<User>();
+					//System.out.println("pasa por if");
+					//System.out.println("Imprime array craeadovacio"+listaUe);
 					
-					//protegemos las contraseñas que no se crearon cifradas al listarUsuarios
-					listaUe.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), miMD5(rs.getString(4)), 
-							rs.getString(5), rs.getInt(6), rs.getString(7)));
 					
-					//System.out.println("IMprime addd"+listaUe);
-					
-					//System.out.println(rs.getInt(1)+rs.getString(2)+rs.getString(3)+rs.getString(4)+ 
-						//	rs.getInt(5)+ rs.getString(6)+ rs.getString(7)+ rs.getString(8)+ rs.getString(9));
-					
-				}//fin while
-				System.out.println("ArrayList: "+listaUe);
+				}//fin if
+				
+				//protegemos las contraseñas que no se crearon cifradas al listarUsuarios
+				listaUe.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), miMD5(rs.getString(4)), 
+						rs.getString(5), rs.getInt(6), rs.getString(7)));
+				
+				//System.out.println("IMprime addd"+listaUe);
+				
+				//System.out.println(rs.getInt(1)+rs.getString(2)+rs.getString(3)+rs.getString(4)+ 
+					//	rs.getInt(5)+ rs.getString(6)+ rs.getString(7)+ rs.getString(8)+ rs.getString(9));
+				
+			}//fin while
+			System.out.println("ArrayList: "+listaUe);
 			
 			
 			return listaUe;
@@ -377,7 +377,7 @@ public class DaoUser {
 		}//fin updatePerfil
 		
 		
-		/**modificar string password a MD5*/
+		/**modificar string password a MD5			código de Otero*/
 		private static String miMD5(String inputPassword) {
 	        try {
 	            MessageDigest md = MessageDigest.getInstance("MD5");
