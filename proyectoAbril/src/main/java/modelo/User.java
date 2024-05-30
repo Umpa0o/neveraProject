@@ -142,7 +142,7 @@ public class User {
 		this.passwordUser = passwordUser;
 	}
 	
-	/**Metodo getEsAdmin que recoge el tipo de permiso del usuario sobre la aplicación
+	/**Metodo getEsAdmin que recoge el numEntero que representa el tipo de permiso del usuario sobre la aplicación
 	 * @return esAdmin Numero entero(int) que representa el permiso del usuario*/
 	public int getEsAdmin() {
 		return esAdmin;

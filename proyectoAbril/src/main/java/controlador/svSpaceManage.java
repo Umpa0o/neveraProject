@@ -14,10 +14,9 @@ import dao.DaoSpace;
 import dao.DaoUser;
 import modelo.Space;
 
-
-
 /**
- * Servlet implementation class svSpaceManage
+ * Servlet implementation class svSpaceManage recoge los datos y los devuelve
+ * para que el usuario pueda ver el apartado de sus espacios.html y gestionarlos
  */
 public class svSpaceManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;

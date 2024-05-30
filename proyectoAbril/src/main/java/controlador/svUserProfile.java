@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import modelo.User;
 
@@ -15,9 +16,14 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+/**Servlet implementation class svUserProfile para la página de perfil de usuario
+ * 	podrá subir una imagen como imagen de su propio prefil, marco de foto, descripcion del perfil, gestion de espacios y listaas
+ * @author Patricia Fedriani
+ * @version 04/05/2024 v1
 
 
-/**anotación-> @nombre  pueden llevar atributos, en este caso avisamos de que usaremos multipart
+	anotación-> @nombreAnotacion: pueden llevar atributos, 
+	en este caso avisamos de que usaremos multipart
 Si no lo ponemos, no reconocerá ninguna funcion correspondiente al envio de archivos*/
 @MultipartConfig
 
@@ -26,15 +32,12 @@ buscará el nombre del servlet mediante anotación, indicamos que está en la ra
 como todos los servlets "/" y el nombre del servlet*/
 //@WebServlet("/svUserProfile")
 
-/**
- * Servlet implementation class svUserProfile para la página de perfil de usuario
- * 	podrá subir una imagen como imagen de su propio prefil, marco de foto, descripcion del perfil, gestion de espacios y listaas
- * 
- * 
- */
+
 public class svUserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	HttpSession sesion;
+	
 	//creamos atributo de la clase privado de objeto tipo file
 		private String rutaCarpeta = "C:\\xampp\\htdocs\\neveraProject\\proyectoAbril\\src\\main\\webapp\\img\\usr";
 		private File subidas = new File(rutaCarpeta);
@@ -46,7 +49,12 @@ public class svUserProfile extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		sesion = request.getSession();
+		
+		int id_usuario= (Integer)sesion.getAttribute("id_usuario");
+		String nombreUsuario = (String) sesion.getAttribute("nombre");
+		System.out.println("perfil servlet: "+id_usuario);
+		System.out.println("perfil servlet: "+nombreUsuario);
 
 	}//fin doGet
 
@@ -65,7 +73,7 @@ public class svUserProfile extends HttpServlet {
 		
 		
 		
-		/**SUBIR IMÁGENES:
+		/**SUBIR IMAGENES:
 		 *  recibimos el nombre del campo del formulario para subir la img fotoUsuario
 		 * y recuperamos la foto del formulario
 		 * <ul>

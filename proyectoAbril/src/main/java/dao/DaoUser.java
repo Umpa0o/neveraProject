@@ -16,8 +16,10 @@ import modelo.User;
 /**CLASE DAO: clase reservada para todas las acciones que tiene 
  * un objeto con iteración en una base de datos. Tienen persistencia. DAO -> InsertarUsuario
  * 
- * clase TAD: clases creadas para gestionar colecciones de objeto.Ej un ArrayList. TAD -> ListarUsuarios
+ * CLASE TAD: clases creadas para gestionar colecciones de objeto.Ej un ArrayList. TAD -> ListarUsuarios
  * 
+ * @author Patricia Fedriani
+ * @version  28/04/2024 v1
  * */
 
 
@@ -28,7 +30,7 @@ public class DaoUser {
 		
 		/**Constructor de DaoUser
 		 * cuando esta clase se instancia se conecta, usando el propio constructor DaoUser()
-		 * @throws SQLException
+		 * @throws SQLException Se lanza si se generan errores al conectar/acceder a la base de daatos
 		 * */
 		public DaoUser() throws SQLException {
 			
@@ -38,9 +40,10 @@ public class DaoUser {
 		
 		
 		
-		/**Metodo para insertarUsuarios en la database
+		/**Metodo insertarUsuarios() hace consulta para insertar en la DB
+		 * los datos recogidos del formulario de registro altaUser.html
 		 * @param Objeto ue del tipo User
-		 * @throws SQLException
+		 * 
 		 * */
 		public void insertarUser(User ue) {
 			
@@ -106,8 +109,10 @@ public class DaoUser {
 			
 		}//fin metodo insertarUser()
 		
-		/**metodo listarUsuarios() Crea una coleccion de datos tipo User a null
-		 * @throws SQLException 
+		/**metodo listarUsuarios() Crea una coleccion de datos(ArrayList)de tipo User 
+		 * la inicializamoa a null, si es null creamos el ArrayList y si no le
+		 * añadimos la información nombreArray.add(nuevo objeto Usuario)
+		 * @throws SQLException lanza expeción si hay error con la database
 		 * 
 		 * */
 		
@@ -148,15 +153,15 @@ public class DaoUser {
 			
 		}// fin listarUsuarios()
 		
-		/**metodo listarTipo() Crea una coleccion de datos tipo User seleccionando por tipo segun buscador Admin
+		/**metodo listarTipo() Crea una coleccion de datos(ArrayList) tipo User 
+		 * seleccionando por tipo segun buscador Admin. 
+		 * Lleva el metodo miMD5 para que el admin no vea contraseñas
 		 * @param int tipo es el numero de permiso del usuario para el buscador/filtro del admin 
-		 * 
-		 * lleva el metodo miMD5
 		 * 
 		 * */
 		
 		public ArrayList<User> listarTipo(int tipo) throws SQLException {
-			//Iniciamos la coleccióna  null
+			//Iniciamos la colección a  null
 			ArrayList<User> listaUa=null;
 			ResultSet rs;
 			
@@ -210,8 +215,8 @@ public class DaoUser {
 					
 		}// fin listarUeJson()
 		
-		/**Método listarTipoJson() listar por tipo sjon
-		 * 
+		/**Método listarTipoJson() listar por tipo sjon devuelve un objeto tipo String
+		 * @param tipo int recoge el tipo de usuario a listar(tipo de rol/permiso/esAdmin)
 		 * @build gson.google
 		 * 
 		 * **/
@@ -230,7 +235,7 @@ public class DaoUser {
 					
 		}// fin listarUeJson()
 		
-		/** metodo actualizaUser devuelve un objeto tipo Usuario por la busqueda en sql de su id
+		/** metodo actualizaUser devuelve un objeto tipo Usuario por la búsqueda en sql de su id
 		 * 			este método se usa para obtener la información del usuario a actualizar y no la update en si
 		 * @param int id como parametro el id del usuario
 		 * */
@@ -256,7 +261,8 @@ public class DaoUser {
 			
 		}// fin actualizaUser()
 		
-		/**MEtodo que actualiza el usuario con los datosd el form del front recibe un objeto deusuario
+		/**MEtodo que actualiza el usuario con los datosd el form del front 
+		 * @param ue recibe como parámetro un objeto de tipo usuario
 		 * 
 		 * */
 		public void actualizador(User ue) {
@@ -285,15 +291,16 @@ public class DaoUser {
 
 				e.getMessage();
 				e.printStackTrace();
-			}
+			}//fin tryCatch
 			
 		}//fin actualizador
 		
 		/**metodo para borrar usuario de la database a traves de seleccionar el id en el panel de administrador
 		 * 	! 
-		 * ?	y desde perfil usuario?!
-	 * 			
-		 * @param int id
+		 * ?	y desde perfil usuario?!-> futura implementación, 
+		 * el usuario puede darse de baja en la zona de su perfil
+		
+		 * @param int id recoge el numero entero que identifica al usuario a eliminar de la DB 
 		 * 
 		 * */
 		public void borrar(int id) {
@@ -312,13 +319,14 @@ public class DaoUser {
 				
 				System.out.println("Error tryCatch borrar usuario");
 				he.getMessage();
-			}
+			}//fin tryCatch
 			
 		}//fin borrar usuario
 		
-		/** metodo logeando()
-		 * @param 	User u
-		 * @param 	String password
+		/** metodo logeando() comprueba email y contraseña del usuario
+		 * devolviendo un objeto de tipo usuario para poder iniciar sesión
+		 * @param 	User u	parametro que especifica objeto usuario a buscar
+		 * @param 	String password recoge la contraseña del usuario
 		 * @throws SQLException 
 		 * 
 		 * */
@@ -339,14 +347,18 @@ public class DaoUser {
 				aux = new User(res.getInt(1), res.getString(2), res.getString(3), (res.getString(4)), 
 					res.getString(5), res.getInt(6), res.getString(7));
 					System.out.println(aux.toString());
-			}
-			//devuelve al usuario
+			}//fin if
 			
+			//devuelve al usuario			
 			return aux;	
 			
 		}//fin logeando()
 		
-		/**metodo para que el usuario actualice su perfil**/
+		/**metodo para que el administrador actualize los datos del usuario 
+		 * @param ue recibe como parámetro un objeto de tipo User
+		 * el cual será el objeto Usuario modificado
+		 * 
+		 * **/
 		public void updatePerfil(User ue) {
 			String queryPerfil = "UPDATE usuario SET nombreUsuario=?, imagenUsuario=?, descripcionUsuario=? WHERE emailUsuario=?";
 			
@@ -372,12 +384,20 @@ public class DaoUser {
 
 				e.getMessage();
 				e.printStackTrace();
-			}
+			}//fin try catch
 			
 		}//fin updatePerfil
 		
 		
-		/**modificar string password a MD5			código de Otero*/
+		/**modificar string password a MD5			código de Otero
+		 * Emplea la clase MessageDigest que aporta la funcionalidad de un algoritmo 
+		 * que resume mensajes y generan un valor hash de longitud fija,
+		 *  en este caso para las contraseña del usuario.
+		 *  Soporta algoritmos MD5,sah-1 y SHA-256
+		 *  @see JavaDoc MessageDigest-> https://docs.oracle.com/javase/8/docs/api/java/security/MessageDigest.html
+		 *  @see Nombres de algoritmos cuando instanciamos la clase Message Direct-> https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest
+		 * 
+		 * */
 		private static String miMD5(String inputPassword) {
 	        try {
 	            MessageDigest md = MessageDigest.getInstance("MD5");
@@ -387,12 +407,13 @@ public class DaoUser {
 
 	            while (hashtext.length() < 32) {
 	                hashtext = "0" + hashtext;
-	            }
+	            }//fin while
 	            return hashtext;
 	            
 	        } catch (NoSuchAlgorithmException e) {
 	            throw new RuntimeException(e);
-	        }
+	        }//fin tryCatch
+	        
 	    }//fin miMD5
 		
 	/*****/

@@ -25,7 +25,11 @@ import modelo.User;
 import dao.DaoUser;
 import dao.conectaDB;
 
-/**anotación-> @nombre  pueden llevar atributos, en este caso avisamos de que usaremos multipart
+/**
+ * Servlet implementation class userManage para trabajar con los form de creacion, inicio de sesion,
+ * lectura, modificacion y eliminacion de usuarios
+ * 
+ * anotación-> @nombre  pueden llevar atributos, en este caso avisamos de que usaremos multipart
 	Si no lo ponemos, no reconocerá ninguna funcion correspondiente al envio de archivos*/
 @MultipartConfig
 
@@ -34,24 +38,21 @@ import dao.conectaDB;
  como todos los servlets "/" y el nombre del servlet*/
 //@WebServlet("/userManage")
 
-/**
- * Servlet implementation class userManage
- */
 public class userManage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//Instanciamos la sessión para poder trabajar con ella
 	HttpSession sesion;
 	
 	//creamos atributo de la clase privado de objeto tipo file
-	private String rutaCarpeta = "C:\\xampp\\htdocs\\neveraProject\\proyectoAbril\\src\\main\\webapp\\img\\usr";
-	private File subidas = new File(rutaCarpeta);
+	//private String rutaCarpeta = "C:\\xampp\\htdocs\\neveraProject\\proyectoAbril\\src\\main\\webapp\\img\\usr";
+	//private File subidas = new File(rutaCarpeta);
 
     public userManage() {
         super();
         
     }
 	/**doGet lo que recibe es el listar usuariosJson cuando recibe llamada xget
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//iniciamos la sesion pidiendosela al navegadorWebs
@@ -199,15 +200,15 @@ public class userManage extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+			//VARIABLES que recogen los datos
 	//	int id = Integer.parseInt(request.getParameter("id"));
 			String nombreUser = request.getParameter("nameUser");
 			String emailUser =request.getParameter("mailUser");
 			String pswUser = request.getParameter("passUser");
 			String id = request.getParameter("id");
-		try {
-			
 		
+		try {
+
 			//User(String nombreUser, String email, String passwordUser) 
 			User ue = new User(nombreUser, emailUser, pswUser);
 			System.out.println(ue.toString());
@@ -234,58 +235,13 @@ public class userManage extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("Error al insertar");
 			e.getMessage();
-		}
+		}//fin tryCtch
+		
 		//mandamos a la página html de gestion administrador
 		response.sendRedirect("preperfil.html");
 		
-		/**SUBIR IMÁGENES:
-		 *  recibimos el nombre del campo del formulario para subir la img fotoUsuario
-		 * y recuperamos la foto del formulario
-		 * <ul>
-		 * 		<li>.getPart()-> part: bloque de datos	</li>
-		 * 		<li>.getParts()-> para listas con varias fotos, permite subir varias img a la vez</li>
-		 * </ul>
-		 * @see 
-		 * <ul>javadocs
-		 * 		<li> Part: https://docs.oracle.com/javaee%2F7%2Fapi%2F%2F/javax/servlet/http/Part.html#getSubmittedFileName--	</li>
-		 * 		<li> Paths: https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html#get-java.lang.String-java.lang.String...- </li>
-		 * 		<li> File: https://docs.oracle.com/javase/8/docs/api/java/io/File.html </li>
-		 * 		<li> Files: https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html    </li>
-		 *  <li></li>
-		 * 
-		 * </ul>
-		 * 		
-		 *
-		 * **/
-	/**	Part part= request.getPart("fotoUsuario");
-		
-		//Coger el nombre del archivo que se ha subido, "ruta/nombre.png" con objeto tipo path del archivo part que obtenemos
-		Path path = Paths.get(part.getSubmittedFileName());
-		
-		//Recogemos el string para guardar en la db
-		String fileName = path.getFileName().toString();
-		
-		//Preparamos buffer para transmitir los datos(part, el bloque que recoge la img del form)
-		InputStream input = part.getInputStream();
-		
-		//creamos un archivo en la carpeta de subidas de usuario que será el contenedor de la img "file"
-		File file = new File(subidas, fileName);
-		
-		//Copiamos al contenedor los datos que tiene el part mediante el buffer usamos libreria Files
-		Files.copy(input, file.toPath());
-	**/
-		
-	}//fin doPost
 	
-	/**Subir una imagen, pasos a seguir:				tutoria Antonio	16/03/2024
-	 *		-Decidir en que carpetas se guardan las fotos 
-	 *		-Recuperar el nombre del archivo que subir
-	 *		-Recuperar la ruta temporal donde el servidor guardo el archivo
-	 *		-Decidir el nombre que va a tener el archivo, hacerlo objeto FILE (java usa clase file para gestionar tanto carpetas como archivos)
-	 *		-Trasmitir los datos del archivo
-	 *		-Guardar el archivo
-	 * 
-	 * **/
+	}//fin doPost
 	
 
 }//fin Servlet userManage

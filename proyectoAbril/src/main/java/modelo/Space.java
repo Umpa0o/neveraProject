@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import dao.DaoSpace;
 import dao.DaoUser;
 
-/** Clase Usuario. Recoge los datos de los espacios 
+/** Clase Space. Recoge los datos de los espacios 
  * @author patfe
  * @version 12/04/2024A v 1
  * 
@@ -20,11 +20,18 @@ public class Space {
 	private int id_usuario;
 	
 	//CONSTRUCTORES
+
+	/**Constructor Space() por defecto
+	 * */
 	public Space() {
 		super();
 	}
-	
-	//consuctror sin id para insertar espacio
+	/**Constructor Space() sin parámetro id para insertar espacio
+	 * @param nombreEspacio(String) 
+	 * @param regimenTemperatura (String) 
+	 * @param icono (String) 
+	 * @param id_usuario (int) número entero que identifica inequivocamente al usuario propietario de ese espacio
+	 * */
 	public Space(String nombreEspacio, String regimenTemperatura, String icono, int id_usuario) {
 		super();
 		this.nombreEspacio = nombreEspacio;
@@ -32,8 +39,14 @@ public class Space {
 		this.icono = icono;
 		this.id_usuario = id_usuario;
 	}
-
-	//constructor completo
+	
+	/**constructor completo Space()
+	 * @param id_espacio(int) recoge número entero de identificación único del objeto de tipo espacio
+	 * @param nombreEspacio(String) cadena de caracteres que representa el nombre dado al espacio de almacenaje
+	 * @param regimenTemperatura (String) cadena de caracteres que recoge el tipo de temperatura(ambiente, frio, congelado)
+	 * @param icono (String) cadena de caracteres que presenta la ruta hacia una imagen para representar al espacio
+	 * @param id_usuario (int) número entero que identifica inequivocamente al usuario propietario de ese espacio
+	 * */
 	public Space(int id_espacio, String nombreEspacio, String regimenTemperatura, String icono, int id_usuario) {
 		super();
 		this.id_espacio = id_espacio;

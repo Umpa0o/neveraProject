@@ -11,6 +11,11 @@ import com.google.gson.Gson;
 
 import modelo.Space;
 //clase DAO para el tipo objeto Space
+/**CLASE DAO: clase reservada para todas las acciones que tiene 
+ * un objeto con iteración en una base de datos. En este caso tipo Objeto Space
+ * @author Patricia Fedriani
+ * @version  02/05/2024 v1
+ * */
 
 public class DaoSpace {
 	//atributo estatico tipo connection
@@ -24,7 +29,9 @@ public class DaoSpace {
 	
 	//MÉTODOS CRUD
 	
-	/***insertarEspacio en DB*/
+	/***insertarEspacio en DB metodo para insertar un espacio en la database nevera MySQL
+	 * @param sp objeto de tipo Space
+	 * */
 	public void insertarEspacio(Space sp) {
 		PreparedStatement pr;
 		ResultSet rs=null;
@@ -81,11 +88,14 @@ public class DaoSpace {
 		} catch (SQLException e) {
 			
 			System.out.println("Error excepcion listarUsuarios"+e.getMessage());
-		}
+		}//fin try/catch
 		
 	}//fin insertarEspacio()
 	
-	/**método listarEspacios() recoge en arrayList los espacios del usuario*/
+	/**metodo listarEspacios() recoge en arrayList de tipo Space los espacios del usuario
+	 * @param id_usuario de tipo int, recibe el id de usuario para poder trabajar con el en
+	 * la consulta a la base de datos
+	 * */
 	public ArrayList<Space> listarEspacios(int id_usuario){
 		ArrayList<Space> listaSpace = null;
 		ResultSet rs;
@@ -126,7 +136,12 @@ public class DaoSpace {
 		
 	}//fin listarEspacios()
 	
-	/**json para lista respacios*/
+	/**metodo espacioJson que devuelve un objeto de tipo String
+	 * es un método que emplea json para lista respacios
+	 * @param id_usuario de tipo int, recibe el numero entero que identifica al usuario 
+	 * para saber a quien listarle los espacios
+	 * 
+	 * */
 	
 	public String espacioJson(int id_usuario) {
 		String paco = "";
