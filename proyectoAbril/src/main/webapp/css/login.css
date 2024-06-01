@@ -3,13 +3,14 @@
     padding: 0%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
+/** no hay ni un pooco de resposive*/
 .container{
     background-color: aquamarine;
-    width: 50%;
+    width: 80%;
     min-width: 450px;
     max-width: 550px;
-    height: 800px;
+    padding: 0px  0px 240px 0px;
+
 }
 
 header{
@@ -62,51 +63,3 @@ a{
     width: 100%;
 
 }
-
-.btnFormulario button{
-    width: 140px;
-    height: 50px;
-    font-size: 16px;
-    padding: 5px 12px ;
-    margin: 5px 5px;
-    text-align: center;
-
-    
-}
-
-
-.btnImg{
-    width: 20%;
-    color: #fff;
-}
-
-.btnReset{
-    background-color: rgb(251, 245, 71);
-    cursor: progress;
-    float: left;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-
-}
-
-.btnReset:hover{
-    background-color: gold;
-    color: red;
-}
-
-.btnEnviar{
-    background-color: rgb(202, 242, 142);
-    cursor: pointer;
-    float: right;
-    
-}
-
-.btnEnviar:hover{
-    background-color: greenyellow;
-    color:  green;
-}
-
-
-
-/**/
