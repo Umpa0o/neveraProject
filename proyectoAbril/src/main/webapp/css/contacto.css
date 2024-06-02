@@ -9,13 +9,14 @@
     width: 50%;
     min-width: 450px;
     max-width: 550px;
-    height: 800px;
+    height: auto;
+    padding-bottom:20px;
 }
 
 header{
     height: 60px;
     min-height: 70px;
-    background-color: beige;
+
 }
 
 a{
@@ -47,18 +48,26 @@ a{
 }
 
 
+/**  CUERPO PAGINA CONTACTO.HTML  **/
 
-.formularioContacto , label{
-    display: block;
+.formularioContacto {
+	padding:20px;
+	
+	
 }
 
 
-.textoUser{
+.formularioContacto , label{
+    display: block;
+    
+}
+
+
+#textoUser{
     resize: none;
 }
 
 .btnFormulario{
-    background-color: bisque;
     height: 50px;
     width: 100%;
 
@@ -80,6 +89,7 @@ a{
     width: 20%;
     color: #fff;
 }
+
 
 .btnReset{
     background-color: rgb(251, 245, 71);

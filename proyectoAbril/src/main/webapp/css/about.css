@@ -1,0 +1,102 @@
+*{
+    margin:0% auto;
+    padding: 0%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container{
+	background-color: aquamarine;
+	height:auto;
+	width: 80%;
+    min-width: 450px;
+    max-width: 1250px;
+    
+}
+
+/*++++  MENÚ  ++++*/
+header{
+    height: 60px;
+    min-height: 70px;
+    
+}
+
+.titleLogo{
+        color: #fff;
+        
+}
+
+.menuContacto a{
+    text-decoration: none;
+    padding: 0 10px;
+    color: #fff;
+}
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+    background-color: rgb(176, 14, 176);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.menuContacto ul{
+    display: flex;
+    list-style-type: none;
+    
+}
+.menuContacto a:hover{
+    background-color: blueviolet;
+    padding: 6px 10px;
+    border-radius: 15px;
+    line-height: 2;
+    text-decoration: underline;
+    cursor: grabbing;
+}
+
+/*++++  CONTENIDO ABOUTUS.HTML  ++++*/
+
+
+.txtAbout{
+  	margin-left:20px;
+  	padding:10px;
+  	background-color: #C7F3FA;
+ }
+    
+.sugerencias{
+	margin:20px 0px;
+	padding:10px 0px 20px 20px;
+}
+
+
+.abtTeam{
+	margin-left:20px;
+}
+.ejTeam{
+
+	background-color: #B4FFEA;
+	margin:20px;
+	padding:10px 0px 40px 0px;
+	border-radius:20px;
+	/*border: 1px solid black;*/
+	
+}
+
+.ejTeam h4{
+	margin-left:20px;
+}
+
+.ejTeam img{
+	float:left;
+	width:100px;
+	
+	padding:20px;
+	border-radius: 75px;
+}
+
+.ejTeam p{
+	margin:10px 20px 0px 10px;
+	padding: 5px;
+}
+
+
+
+

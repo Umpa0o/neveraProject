@@ -1,12 +1,37 @@
+
+@media (max-width: 600px){
+	#listado_usuarios table{
+	margin: 0px;
+	}
+	
+	#tablaUsuarios tr{
+		display:flex;
+		border-bottom: 1px solid black;	
+		flex-direction: column;
+	}
+	
+	#tablaUsuarios td, th{
+    	border-bottom: 1px solid #FBF3FF !important; 
+    }
+    thead{
+    background-color: rgb(236, 135, 135);}
+
+}/*fin media query*/
+
+
+
+/** CUERPO PAGINA GESTIONADMIN.HTML**/
+
 #tablaUsuarios{
-    background-color: rgb(236, 135, 135);
+    
     border: 1px solid black;
     height:200px;
-    /*width: auto;
+    /*background-color: rgb(236, 135, 135);
+    width: auto;
     margin-top:60px;*/
     margin-left:-140px;
     border-collapse: collapse; 
-    width: 50% ;
+    width: 100% ;
 
 }
 #tablaUsuarios td, th{
@@ -16,13 +41,27 @@
     
 }
 
+#tablaUsuarios th{
+	background-color: rgb(236, 135, 135);
+}
+
+
+#listado_usuarios tbody tr:nth-child(odd) {
+  background-color: grey;
+}
+
+#listado_usuarios tbody tr:nth-child(even) {
+  background-color: #FBF3FF;
+}
+
+
+
+
 .btnGestion{
-    
     color: black;
+    margin:2px -5px;
 }
-.btnGestion a{
-    color: black;
-}
+
 
 #usuarioAeditar{
     display: none;

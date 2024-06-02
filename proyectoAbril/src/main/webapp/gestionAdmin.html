@@ -46,10 +46,11 @@
     		
     		let html = "<table id='tablaUsuarios'>";
     		html += "<h4>"+""+"</h4>";
+    		html += "<thead>";
     		html += "<tr><th>id</th><th>Nombre</th><th>Email</th><th>Password</th>"+
     		"<th>imgUser</th><th>Permiso</th><th>Descripcion Perfil</th><th colspan='2'>Acciones</th></tr>";
-    		//<th>fechaNacimiento</th>
-    		
+    		html += "</thead>";
+    		html += "<tbody>";
     		for(let i=0; i<datosUsuarios.length; i++){
     			html += "<tr>";
 
@@ -57,19 +58,19 @@
     			html += "<td>"+datosUsuarios[i].nombreUser+"</td>";
     			html += "<td>"+datosUsuarios[i].email+"</td>";
     			html += "<td>"+datosUsuarios[i].passwordUser+"</td>";
-    			html += "<td>"+datosUsuarios[i].imgUser+"</td>";
+    			html += "<td><img src='img/usr/"+datosUsuarios[i].imgUser+"'></td>";
     			html += "<td>"+datosUsuarios[i].esAdmin+"</td>"; 			
     			html += "<td>"+datosUsuarios[i].descripcionPerfil+"</td>";
    				/**/
-   				html += "<td><a class='btnGestion' href='modificarUsuario.html?id="+datosUsuarios[i].id+"&op=2'><img src='img/icon/borrar16.png'>Editar</a>"+"</td>";
+   				html += "<td><a class='btnGestion' href='modificarUsuario.html?id="+datosUsuarios[i].id+"&op=2'><img src='img/icon/lapiz16.png'>Editar</a>"+"</td>";
    				//html += "<td><a href='userManage?id="+datosUsuarios[i].id+"&op=2'>Editar</a>"+"</td>";
-   				html += "<td><a class='btnGestion'  href='javascript:borrar("+datosUsuarios[i].id+")' ><img src=''>Borrar</a></td>";
+   				html += "<td><a class='btnGestion'  href='javascript:borrar("+datosUsuarios[i].id+")' ><img src='img/icon/borrar_usuario16.png'>Borrar</a></td>";
     			
     			html += "</tr>";
     			
     		}//fin for
     		
-    		
+    		html += "</tbody>";
     		html +=  "</table>";
     		
     		document.getElementById("listado_usuarios").innerHTML = html;
@@ -157,10 +158,10 @@
                 <h3>Fridge 4All</h3>
                 <nav class="menuContacto">
                     <ul>
-                        <li><a href="inicio.html">Inicio</a></li>
-                        <li><a href="profile.html">Perfil</a></li>
-                        <li><a href="">Espacios</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="login.html">Inicio</a></li>
+                        <li><a href="preperfil.html">Perfil</a></li>
+                        <li><a href="espacios.html">Espacios</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
                         <li><a href="contacto.html">Contact</a></li>
                     </ul>
                 </nav>
