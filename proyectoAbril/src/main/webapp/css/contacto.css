@@ -23,6 +23,7 @@ a{
     padding: 0 10px;
     color: #fff;
 }
+/**Estilo del menú general**/
 .logoEmpresa{
     display: flex;
     align-items: center;
