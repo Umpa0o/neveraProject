@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Administrador</title>
-    <link rel="stylesheet" type="text/css" href="css/contacto.css">
+    
 	<link rel="stylesheet" type="text/css" href="css/gestion.css">
     
-   <!--<script src="jS/jsGestionAdmin.js"></script> --> 
+   <!--<link rel="stylesheet" type="text/css" href="css/contacto.css">
+   <script src="jS/jsGestionAdmin.js"></script> --> 
 	<script type="text/javascript">
 		//Funciones
 		//funcion para pintar la información de nuestro servlet    
@@ -54,11 +55,11 @@
     		for(let i=0; i<datosUsuarios.length; i++){
     			html += "<tr>";
 
-    			html += "<tr><td>"+datosUsuarios[i].id+"</td>";
+    			html += "<td>"+datosUsuarios[i].id+"</td>";
     			html += "<td>"+datosUsuarios[i].nombreUser+"</td>";
     			html += "<td>"+datosUsuarios[i].email+"</td>";
     			html += "<td>"+datosUsuarios[i].passwordUser+"</td>";
-    			html += "<td><img src='img/usr/"+datosUsuarios[i].imgUser+"'></td>";
+    			html += "<td><img class='imgUserTabla' src='img/usr/"+datosUsuarios[i].imgUser+"'></td>";
     			html += "<td>"+datosUsuarios[i].esAdmin+"</td>"; 			
     			html += "<td>"+datosUsuarios[i].descripcionPerfil+"</td>";
    				/**/
