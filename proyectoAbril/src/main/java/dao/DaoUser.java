@@ -311,7 +311,7 @@ public class DaoUser {
 				ps.setInt(1, id );
 				
 				int filas = ps.executeUpdate();	
-				ps.close();
+				System.out.println(ps.toString());
 				System.out.println("Usuario borrado");
 				
 				
