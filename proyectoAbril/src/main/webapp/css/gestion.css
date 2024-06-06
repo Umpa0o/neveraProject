@@ -123,7 +123,7 @@ a{
 }
 
 #buscadorUsuario{
-    /**/background-color: bisque;
+    /*background-color: bisque;*/
     height: 80px;
     display: none;
     padding:20px 40px;
@@ -137,7 +137,7 @@ a{
 }
 
 #tipoUsuario{
-    background-color: rgb(239, 239, 174);
+    /*background-color: rgb(239, 239, 174);*/
 }
 
 

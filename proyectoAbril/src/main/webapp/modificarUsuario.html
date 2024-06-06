@@ -5,45 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificando Usuario</title>
     <link rel="stylesheet" type="text/css" href="css/contacto.css">
+    <link rel="stylesheet" type="text/css" href="css/modificaUs.css">
     <!-- <script src="./js/editUs.js"></script> -->
 </head>
-<style>
-    /*#editarTablaUsuario{
-        background-color: red;
-        border: 1px solid black;
-        height:200px;
-        width: 800px;
-        margin-left:-140px;
-    }*/
-    
-    #modificaUser{
-    	padding: 20px 0px;
-    	border-bottom: 1px solid black;
-    }
-    #modificaUser {
-    	border: 1px solid black;
-    }
-    
-    #editarUsuario td{
-    	/*display:block;*/
-    	
-    	height:30px;
-   	}
-   	
-   	#editarUsuario span{
-	   	font-weight:bolder;
-	   	margin-right: 10px;
-   	}
-   	
-   	#passwordUser input:disabled{
-   		background-color:grey;
-   	}
-   /*	#editarUsuario input{
 
-   	}*/
-
-   	
-</style>
 
 <script type="text/javascript">
 	//FUNCIONES
@@ -165,10 +130,10 @@
                 <h3>Fridge 4All</h3>
                 <nav class="menuContacto">
                     <ul>
-                        <li><a href="inicio.html">Inicio</a></li>
-                        <li><a href="profile.html">Perfil</a></li>
-                        <li><a href="">Espacios</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="login.html">Inicio</a></li>
+                        <li><a href="preperfil.html">Perfil</a></li>
+                        <li><a href="espacios.html">Espacios</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
                         <li><a href="contacto.html">Contact</a></li>
                     </ul>
                 </nav>
@@ -188,10 +153,10 @@
                 <input id="nombre" name="nombre" type="text" required>
                 
                 <label for="email">Correo electrónico: *</label>
-                <input id="email" name="email" type="mail"  required>
+                <input id="email" name="email" type="mail"  disabled>
                 
                 <label for="passUser">Contraseña: *</label>
-                <input id="passUser" name="passUser" type="text"  >
+                <input id="passUser" name="passUser" type="password" disabled >
                 
                 <label for="imgUser">Imagen de usuario: </label>
                 <input id="imgUser" name="imgUser" type="text" >

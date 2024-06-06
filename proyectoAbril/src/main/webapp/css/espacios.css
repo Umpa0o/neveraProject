@@ -1,11 +1,16 @@
-#creadorEspacio{
-    border: 1px solid black;
+#creadorEspacio form{
+    margin:0px 10px;
+}
+
+.saveSpace{
+	margin-top:20px;
 }
 
 
 
-#vistasEspacios{
-    background-color: bisque;
+.vistasEspacios{
+    
+    margin-top:20px;
 }
 
 #icnEspacio{

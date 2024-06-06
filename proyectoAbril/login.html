@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta de Usuario</title>
-    
-    <link rel="stylesheet" type="text/css" href="css/altas.css">
+    <title>Login</title>
+    <!--  <link rel="stylesheet" type="text/css" href="css/contacto.css">-->
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+
 
 </head>
 <body>
@@ -16,9 +17,10 @@
                 <h3>Fridge 4All</h3>
                 <nav class="menuContacto">
                     <ul>
-                        <li><a href="inicio.html">Inicio</a></li>
-                        <li><a href="preperfil.html">Perfil</a></li>
-                        <li><a href="espacios.html">Espacios</a></li>
+                    <!-- patata a cambiar en un futuro no tienenen que llevar al login.html -->
+                        <li><a href="login.html">Inicio</a></li>
+                        <li><a href="login.html">Perfil</a></li>
+                        <li><a href="login.html">Espacios</a></li>
                         <li><a href="aboutUs.html">About</a></li>
                         <li><a href="contacto.html">Contact</a></li>
                     </ul>
@@ -26,16 +28,16 @@
             </div>
 
         </header>
-        <h1>Regístrate</h1>
+        <h1>Iniciar Sesión</h1>
+        
+       <!-- <div id="mensajeLogin" class="mensajeLogin" name="mensajeLogin"></div> --> 
 
-        <div class="formularioAltaUsuario">
+        <div class="formularioLogin">
             
             <!-- Formulario de Registro -->
-            <form name="formAltaUser" method="post" action="userManage">
-                <label for="nameUser">Nombre de usuario: *</label>
-                <input name="nameUser" type="text" required>
-                <label for="mailUser">Correo electrónico: *</label>
-                <input name="mailUser" type="mail"  required>
+            <form name="formLogin" method="post" action="Login">
+                <label for="mailUser">Email usuario: *</label>
+                <input name="mailUser" type="mail" required>
                 <label for="passUser">Contraseña: *</label>
                 <input name="passUser" type="password"  required>
  
@@ -46,14 +48,15 @@
                 
 				<!-- Botones Formulario -->
                 <div class="btnFormulario">
-                    <button class="" type="reset" title="Borrar contenido del Formulario y empezar de cero">Vaciar Formulario</button>
-                    <button class="" type="submit" title="Enviar el formulario y darse de alta">Registrarse</button>
+                    <button class="" type="reset" title="Borrar contenido del Formulario y empezar de cero">Vaciar </button>
+                    <button class="" type="submit" title="Enviar el formulario y darse de alta">Iniciar Sesión</button>
                 </div>
-                <P id="pCampo">* Campos Obligatorios</P>
-                <a id="irInicio" type="button" href="login.html" title="Inicio de sesión">Ir a Iniciar Sesión</a>
                 
 
             </form>
+            <br>
+            <p>¿No tienes cuenta todavía? <a class="btnRegistra" type="button" href="altaUser.html" alt="Regístrate a traves de este link">¡Regístrate!</a></p>
+            <P>* Campos Obligatorios</P>
             
         </div> <!-- FIN DIV formularioAltaUsuario -->
 

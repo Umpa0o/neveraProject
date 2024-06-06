@@ -1,0 +1,27 @@
+
+	#modificaUser label, input{ 
+		display: block;
+		margin-left:10px;
+
+    }
+    
+
+    #editarUsuario td{
+    	/*display:block;*/
+    	
+    	height:30px;
+   	}
+   	
+   	#editarUsuario span{
+	   	font-weight:bolder;
+	   	margin-right: 10px;
+   	}
+   	
+   	#passwordUser input:disabled{
+   		background-color:grey;
+   	}
+   	
+   	.btnVolverAdmin{
+   		color: rgb(180, 63, 230);
+    font-weight: bolder;
+   	}

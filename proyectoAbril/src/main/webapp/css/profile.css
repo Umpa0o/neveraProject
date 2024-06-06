@@ -12,6 +12,10 @@
     height: 800px;
     
 }
+
+.disNone{
+	display:none;
+}
 /*++++  MENÚ  ++++*/
 header{
     height: 60px;
